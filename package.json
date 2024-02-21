@@ -1,0 +1,39 @@
+{
+  "name": "@amplicode/amplicode-ra-storybook",
+  "version": "0.0.1",
+  "description": "Amplicode Storybook for Material UI",
+  "files": [
+    "src/*",
+    "storybook-static/*",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.10",
+    "@mui/material": "^5.15.7",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.10",
+    "@storybook/addon-interactions": "^7.6.10",
+    "@storybook/addon-links": "^7.6.10",
+    "@storybook/addon-storysource": "^7.6.10",
+    "@storybook/blocks": "^7.6.10",
+    "@storybook/react": "^7.6.10",
+    "@storybook/react-vite": "^7.6.10",
+    "@storybook/test": "^7.6.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.6.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Amplicode",
+  "license": "Apache-2.0"
+}
