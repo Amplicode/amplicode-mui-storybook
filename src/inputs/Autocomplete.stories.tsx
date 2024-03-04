@@ -16,7 +16,7 @@ const meta = {
   },
   args: {
     options: ['Button', 'Autocomplete', 'Checkbox', 'Rating', 'Select', 'Avatar', 'Divider']
-  }
+  },
 } satisfies Meta<typeof Autocomplete>;
 
 export default meta;

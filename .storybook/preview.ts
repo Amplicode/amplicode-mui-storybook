@@ -6,6 +6,15 @@ const preview: Preview = {
     controls: {
       // expanded: true,
     },
+    backgrounds: {
+      default: 'grey',
+      values: [
+        {
+          name: 'grey',
+          value: '#f5f5f5',
+        },
+      ],
+    },
   },
 };
 
