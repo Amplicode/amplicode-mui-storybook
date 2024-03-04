@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Chip } from "@mui/material";
 
 const meta = {
+  id: "data-display-chip",
   title: "Data Display/Chip",
   component: Chip,
   parameters: {
