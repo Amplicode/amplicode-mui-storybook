@@ -121,7 +121,7 @@ export const Outlined: Story & {
   render: ({ text }) => {
     return (
       <Alert
-        variant="filled"
+        variant="outlined"
       >
         {text}
       </Alert>
