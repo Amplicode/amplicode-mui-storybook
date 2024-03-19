@@ -12,7 +12,7 @@ const wrapper = (Story: () => React.JSX.Element) => {
 };
 
 const meta = {
-  title: "Inputs/Floating Action Button",
+  title: "Inputs/FloatingActionButton",
   component: Fab,
   parameters: {
     layout: "centered",

@@ -19,10 +19,10 @@ const wrapper = (Story: ({ open, onClose }: { open: boolean; onClose: () => void
   };
 
   return (
-    <Box sx={{ width: 200 }}>
-      <Button onClick={onOpen}>Open Snackbar</Button>
+    <>
+      <Button variant="contained" onClick={onOpen}>Open Snackbar</Button>
       <Story open={open} onClose={onClose} />
-    </Box>
+    </>
   );
 };
 
