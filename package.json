@@ -20,7 +20,8 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.7",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "@amplicode/storybook-extensions": "^0.0.3"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.10",

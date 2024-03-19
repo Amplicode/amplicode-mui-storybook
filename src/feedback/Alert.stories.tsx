@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert, Button } from "@mui/material";
+import { GenerationInstructions } from "@amplicode/storybook-extensions";
+import { useState } from "react";
 
 type CustomAlertArgs = Parameters<typeof Alert>[0] & { text: string; withAction?: boolean; actionText?: string };
 
@@ -26,9 +28,7 @@ export default meta;
 
 type Story = StoryObj<CustomAlertArgs>;
 
-export const Success: Story & {
-  args: CustomAlertArgs;
-} = {
+export const Success: Story = {
   render: ({ variant, text }) => {
     return (
       <Alert
@@ -44,9 +44,7 @@ export const Success: Story & {
   },
 };
 
-export const Info: Story & {
-  args: CustomAlertArgs;
-} = {
+export const Info: Story = {
   render: ({ variant, text }) => {
     return (
       <Alert
@@ -62,9 +60,7 @@ export const Info: Story & {
   },
 };
 
-export const Warning: Story & {
-  args: CustomAlertArgs;
-} = {
+export const Warning: Story = {
   render: ({ variant, text }) => {
     return (
       <Alert
@@ -80,9 +76,7 @@ export const Warning: Story & {
   },
 };
 
-export const Error: Story & {
-  args: CustomAlertArgs;
-} = {
+export const Error: Story = {
   render: ({ variant, text }) => {
     return (
       <Alert
@@ -98,9 +92,7 @@ export const Error: Story & {
   },
 };
 
-export const Filled: Story & {
-  args: CustomAlertArgs;
-} = {
+export const Filled: Story = {
   render: ({ text }) => {
     return (
       <Alert
@@ -115,9 +107,7 @@ export const Filled: Story & {
   },
 };
 
-export const Outlined: Story & {
-  args: CustomAlertArgs;
-} = {
+export const Outlined: Story = {
   render: ({ text }) => {
     return (
       <Alert
@@ -132,9 +122,7 @@ export const Outlined: Story & {
   },
 };
 
-export const Basic: Story & {
-  args: CustomAlertArgs;
-} = {
+export const Basic: Story = {
   render: ({ severity, variant, color, text, ...props }) => {
     return (
       <Alert
@@ -169,16 +157,18 @@ export const Basic: Story & {
   },
 };
 
-export const WithAction: Story & {
-  args: CustomAlertArgs;
-} = {
+export const WithAction: Story = {
   render: ({ severity, variant, color, text, actionText, ...props }) => {
+    function alertAction() {
+        // userAction
+    }
+
     return (
       <Alert
         severity={severity}
         variant={variant}
         color={color}
-        action={<Button color="inherit" size="small">{actionText}</Button>}
+        action={<Button color="inherit" size="small" onClick={alertAction}>{actionText}</Button>}
         {...props}
       >
         {text}
@@ -208,20 +198,34 @@ export const WithAction: Story & {
   },
 };
 
-export const WithClose: Story & {
-  args: CustomAlertArgs;
-} = {
+export const WithClose: Story = {
   render: ({ severity, variant, color, text, ...props }) => {
+
+    const [showAlert, setShowAlert] = useState(true);
+
+    function closeHandler() {
+      // user actions
+      setShowAlert(false);
+    }
+
     return (
-      <Alert
-        severity={severity}
-        variant={variant}
-        color={color}
-        onClose={() => {/** */}}
-        {...props}
-      >
-        {text}
-      </Alert>
+        <>
+            <GenerationInstructions.InsertOnly>
+                {showAlert && <Alert
+                    severity={severity}
+                    variant={variant}
+                    color={color}
+                    onClose={closeHandler}
+                    {...props}
+                >
+                    {text}
+                </Alert>}
+            </GenerationInstructions.InsertOnly>
+
+            {!showAlert && <Button onClick={() => {
+                setShowAlert(true);
+            }}>Show alert</Button>}
+        </>
     );
   },
   argTypes: {
