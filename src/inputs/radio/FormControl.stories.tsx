@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Checkbox, FormControlLabel, Radio } from "@mui/material";
-import { Single } from './RadioButton.stories';
+import { FormControlLabel, Radio } from "@mui/material";
 
 const meta = {
   title: "Inputs/Radio/FormControl",
@@ -29,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 export const Label: Story = {
   render: ({ label, labelPlacement }) => {
     return (
-      <FormControlLabel control={<Radio {...Single.args} />} label={label} labelPlacement={labelPlacement} />
+      <FormControlLabel control={<Radio />} label={label} labelPlacement={labelPlacement} />
     );
   },
   args: {
