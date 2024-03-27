@@ -4,7 +4,7 @@
   "description": "Amplicode Storybook for Material UI",
   "brandInfo": {
     "name": "Amplicode Material UI",
-    "icon": "/public/logo/icon-mono.svg"
+    "icon": "brand-logo.svg"
   },
   "files": [
     "src/*",
