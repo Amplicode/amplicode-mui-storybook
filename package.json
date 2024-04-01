@@ -2,6 +2,7 @@
   "name": "@amplicode/amplicode-mui-storybook",
   "version": "0.9.0",
   "description": "Amplicode Storybook for Material UI",
+  "keywords": ["storybook", "code", "typescript", "react", "mui", "material-ui", "material design"],
   "brandInfo": {
     "name": "Amplicode Material UI",
     "icon": "brand-logo.svg"
@@ -21,7 +22,7 @@
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.7",
     "typescript": "^5.3.3",
-    "@amplicode/storybook-extensions": "^0.0.3"
+    "@amplicode/storybook-extensions": "^0.9.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.10",
