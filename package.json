@@ -1,6 +1,6 @@
 {
   "name": "@amplicode/amplicode-mui-storybook",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Amplicode Storybook for Material UI",
   "repository": "https://github.com/Amplicode/amplicode-mui-storybook",
   "keywords": ["storybook", "code", "typescript", "react", "mui", "material-ui", "material design"],
