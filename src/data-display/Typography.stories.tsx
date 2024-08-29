@@ -8,29 +8,29 @@ const meta = {
     layout: "centered",
   },
   decorators: [],
-  // argTypes: {
-  //   variant: {
-  //     control: "select",
-  //     options: [
-  //       "button",
-  //       "caption",
-  //       "h1",
-  //       "h2",
-  //       "h3",
-  //       "h4",
-  //       "h5",
-  //       "h6",
-  //       "subtitle1",
-  //       "subtitle2",
-  //       "body1",
-  //       "body2",
-  //       "overline",
-  //     ],
-  //   },
-  // },
-  // args: {
-  //   variant: "h6",
-  // },
+  argTypes: {
+    variant: {
+      control: "select",
+      options: [
+        "button",
+        "caption",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "subtitle1",
+        "subtitle2",
+        "body1",
+        "body2",
+        "overline",
+      ],
+    },
+  },
+  args: {
+    variant: "h6",
+  },
 } satisfies Meta<typeof Typography>;
 
 export default meta;
