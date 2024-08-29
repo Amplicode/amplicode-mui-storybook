@@ -1,6 +1,6 @@
 {
   "name": "@amplicode/amplicode-mui-storybook",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Amplicode Storybook for Material UI",
   "keywords": ["storybook", "code", "typescript", "react", "mui", "material-ui", "material design"],
   "brandInfo": {
@@ -17,25 +17,25 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@amplicode/storybook-extensions": "^0.0.3",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.10",
-    "@mui/material": "^5.15.7",
-    "typescript": "^5.3.3",
-    "@amplicode/storybook-extensions": "^0.9.0"
+    "@mui/icons-material": "^6.0.0",
+    "@mui/material": "^6.0.0",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.10",
-    "@storybook/addon-interactions": "^7.6.10",
-    "@storybook/addon-links": "^7.6.10",
-    "@storybook/addon-storysource": "^7.6.10",
-    "@storybook/blocks": "^7.6.10",
-    "@storybook/react": "^7.6.10",
-    "@storybook/react-vite": "^7.6.10",
-    "@storybook/test": "^7.6.10",
+    "@storybook/addon-essentials": "^8.2.9",
+    "@storybook/addon-interactions": "^8.2.9",
+    "@storybook/addon-links": "^8.2.9",
+    "@storybook/addon-storysource": "^8.2.9",
+    "@storybook/blocks": "^8.2.9",
+    "@storybook/react": "^8.2.9",
+    "@storybook/react-vite": "^8.2.9",
+    "@storybook/test": "^8.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.6.10"
+    "storybook": "^8.2.9"
   },
   "publishConfig": {
     "access": "public"

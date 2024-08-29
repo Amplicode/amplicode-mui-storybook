@@ -22,17 +22,8 @@ const meta = {
         step: 1,
       },
     },
-    // divider: {
-    //   options: ['Horizontal', 'Vertical'],
-    //   mapping: {
-    //     Horizontal: <Divider orientation="horizontal" flexItem />,
-    //     Vertical: <Divider orientation="vertical" flexItem />,
-    //   },
-    //   control: {
-    //     type: "select",
-    //   }
-    // }
   },
+  tags: ['wrapper'],
   args: {
     direction: "column",
     spacing: 2,
