@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Paper, styled } from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import * as React from 'react';
+import { Box, Paper, styled, Grid } from "@mui/material";
 
 const meta = {
   title: "Layout/Grid",
@@ -19,15 +17,15 @@ const meta = {
       options: [1, 2, 3, 4, 5, 6, 7, 8],
     },
     rowSpacing: {
-      control:"select",
+      control: "select",
       options: [1, 2, 3, 4, 5, 6, 7, 8],
     },
     columnSpacing: {
-      control:"select",
+      control: "select",
       options: [1, 2, 3, 4, 5, 6, 7, 8],
     },
     columns: {
-      control:"select",
+      control: "select",
       options: [7, 12, 16, 20, 24],
     },
   },
@@ -40,32 +38,32 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-  ...theme.applyStyles("dark", {
-    backgroundColor: "#1A2027",
-  }),
-}));
-
 export const Basic: Story = {
   render: ({ ...props }) => {
+    const Item = styled(Paper)(({ theme }) => ({
+      backgroundColor: "#fff",
+      ...theme.typography.body2,
+      padding: theme.spacing(1),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+      ...theme.applyStyles("dark", {
+        backgroundColor: "#1A2027",
+      }),
+    }));
+
     return (
       <Grid container {...props}>
-        <Grid size={3}>
-          <Item>size=3</Item>
+        <Grid item xs={3}>
+          <Item>xs=3</Item>
         </Grid>
-        <Grid size={9}>
-          <Item>size=9</Item>
+        <Grid item xs={9}>
+          <Item>xs=9</Item>
         </Grid>
-        <Grid size={4}>
-          <Item>size=4</Item>
+        <Grid item xs={4}>
+          <Item>xs=4</Item>
         </Grid>
-        <Grid size={8}>
-          <Item>size=8</Item>
+        <Grid item xs={8}>
+          <Item>xs=8</Item>
         </Grid>
       </Grid>
     );
