@@ -21,6 +21,7 @@ const meta = {
   args: {
     labelPlacement: "start"
   },
+  excludeStories: ['Label']
 } satisfies Meta<typeof FormControlLabel>;
 
 export default meta;

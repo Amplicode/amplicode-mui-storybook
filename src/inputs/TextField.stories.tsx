@@ -17,15 +17,30 @@ const meta = {
       options: ["filled", "outlined", "standard"],
     },
     disabled: {
-      control: "boolean",
+      control: "select",
+      options: [false, true],
     },
     multiline: {
-      control: "boolean",
+      control: "select",
+      options: [false, true],
+    },
+    fullWidth: {
+      control: "select",
+      options: [false, true],
     },
     size: {
       control: "select",
       options: ["small", "medium", "large"],
     },
+    label: {
+      control: "text"
+    },
+    helperText: {
+      control: "text"
+    },
+    defaultValue: {
+      control: "text"
+    }
   },
   args: {
     variant: "outlined",

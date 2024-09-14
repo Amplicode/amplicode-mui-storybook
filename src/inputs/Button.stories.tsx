@@ -210,23 +210,6 @@ export const SendButton: Story = {
   }
 };
 
-/**
- * Generic story which trigger wizard component creator.
- * Wizard shows common argTypes from meta with story's args as default options
- */
-export const GenericButton: Story = {
-  render: ({ variant }: ButtonOwnProps) => {
-    return <Button variant={variant}>Button</Button>;
-  },
-  args: {
-    variant: "contained"
-  },
-};
-
-/**
- * Generic story which trigger wizard component creator.
- * Wizard shows story's argTypes with story's args as default options
- */
 export const GenericIconButton: Story = {
   render: ({ startIcon }: ButtonOwnProps) => {
     return <Button startIcon={startIcon}>Button</Button>;

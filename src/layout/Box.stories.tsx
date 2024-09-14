@@ -11,7 +11,14 @@ const meta = {
     },
   },
   tags: ["wrapper", "morph"],
-  argTypes: {},
+  argTypes: {
+    height: {
+      control: 'number',
+    },
+    width: {
+      control: 'number',
+    }
+  },
 } satisfies Meta<typeof Box>;
 
 export default meta;

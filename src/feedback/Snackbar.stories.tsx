@@ -36,6 +36,14 @@ const meta = {
     },
   },
   decorators: [wrapper],
+  argTypes: {
+    autoHideDuration: {
+      control: "text",
+    },
+    message: {
+      control: "text",
+    }
+  },
   args: {
     autoHideDuration: 5000,
   },

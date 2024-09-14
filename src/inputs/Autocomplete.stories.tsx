@@ -7,15 +7,21 @@ const meta = {
   parameters: {
     layout: "centered",
     controls: {
-      exclude: ['options', 'renderInput']
-    }
+      exclude: ["options", "renderInput"],
+    },
   },
   decorators: [],
-  argTypes: {
-
-  },
+  argTypes: {},
   args: {
-    options: ['Button', 'Autocomplete', 'Checkbox', 'Rating', 'Select', 'Avatar', 'Divider']
+    options: [
+      "Button",
+      "Autocomplete",
+      "Checkbox",
+      "Rating",
+      "Select",
+      "Avatar",
+      "Divider",
+    ],
   },
 } satisfies Meta<typeof Autocomplete>;
 
@@ -25,9 +31,16 @@ type Story = StoryObj<typeof meta>;
 export const Combo: Story = {
   render: ({ renderInput, ...props }) => {
     // @ts-ignore: options must be overwritten for demonstrating
-    return <Autocomplete options={[]} renderInput={renderInput} sx={{ width: 300 }} {...props}  />;
+    return (
+      <Autocomplete
+        options={[]}
+        renderInput={renderInput}
+        sx={{ width: 300 }}
+        {...props}
+      />
+    );
   },
   args: {
-    renderInput: (params) => <TextField {...params} label="Label" />
+    renderInput: (params) => <TextField {...params} label="Label" />,
   },
 };
