@@ -29,7 +29,7 @@ const meta = {
       options: [7, 12, 16, 20, 24],
     },
   },
-  tags: ["wrapper"],
+  // tags: ["wrapper"],
   args: {
     spacing: 2,
   },

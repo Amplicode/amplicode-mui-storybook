@@ -7,23 +7,57 @@ const meta = {
   parameters: {
     layout: "centered",
     controls: {
-      exclude: ['divider']
+      exclude: ["divider"],
     },
   },
-  decorators: [],
+  decorators: [
+    (Story) => {
+      return (
+        <Paper sx={{ width: 500, height: 250, p: 2 }}>
+          <Story />
+        </Paper>
+      );
+    },
+  ],
   argTypes: {
     direction: {
       control: "select",
-      options: ["row", "row-reverse", "column", "column-reverse"]
+      options: ["row", "row-reverse", "column", "column-reverse"],
+    },
+    alignItems: {
+      control: "select",
+      options: [
+        "baseline",
+        "normal",
+        "stretch",
+        "center",
+        "flex-end",
+        "flex-start",
+      ],
+    },
+    justifyContent: {
+      control: "select",
+      options: [
+        "baseline",
+        "normal",
+        "stretch",
+        "center",
+        "flex-end",
+        "flex-start",
+        "space-around",
+        "space-between",
+        "space-evenly",
+      ],
     },
     spacing: {
-      control: {
-        type: "number",
-        step: 1,
-      },
+      control: "select",
+      options: [1, 2, 3, 4, 5, 6, 7, 8],
+    },
+    useFlexGap: {
+      control: "boolean"
     },
   },
-  tags: ['wrapper'],
+  tags: ["wrapper"],
   args: {
     direction: "column",
     spacing: 2,
@@ -36,7 +70,7 @@ type Story = StoryObj<typeof meta>;
 export const Horizontal: Story = {
   render: ({ ...props }) => {
     return (
-      <Stack {...props}>
+      <Stack {...props} alignItems={"center"}>
         <Paper sx={{ p: 2 }}>Item 1</Paper>
         <Paper sx={{ p: 2 }}>Item 2</Paper>
         <Paper sx={{ p: 2 }}>Item 3</Paper>
@@ -44,8 +78,8 @@ export const Horizontal: Story = {
     );
   },
   args: {
-    direction: "row"
-  }
+    direction: "row",
+  },
 };
 
 export const Vertical: Story = {
@@ -60,7 +94,7 @@ export const Vertical: Story = {
   },
   args: {
     direction: "column",
-  }
+  },
 };
 
 export const HorizontalDivided: Story = {
@@ -76,7 +110,7 @@ export const HorizontalDivided: Story = {
   args: {
     direction: "row",
     divider: <Divider orientation="vertical" flexItem />,
-  }
+  },
 };
 
 export const VerticalDivided: Story = {
@@ -92,7 +126,7 @@ export const VerticalDivided: Story = {
   args: {
     direction: "column",
     divider: <Divider orientation="horizontal" flexItem />,
-  }
+  },
 };
 
 export const Wrap: Story = {
@@ -114,9 +148,9 @@ export const Wrap: Story = {
         <Box sx={{ width: 200 }}>
           <Story />
         </Box>
-      )
-    }
-  ]
+      );
+    },
+  ],
 };
 
 export const WrapFillWidth: Story = {
@@ -139,9 +173,9 @@ export const WrapFillWidth: Story = {
         <Box sx={{ width: 200 }}>
           <Story />
         </Box>
-      )
-    }
-  ]
+      );
+    },
+  ],
 };
 
 export const Truncated: Story = {
@@ -163,249 +197,7 @@ export const Truncated: Story = {
         <Box sx={{ width: 100 }}>
           <Story />
         </Box>
-      )
-    }
-  ]
+      );
+    },
+  ],
 };
-
-export const VerticalStart: Story = {
-  render: ({ ...props }) => {
-    return (
-      <Stack {...props} height={250}>
-        <Paper sx={{p: 2}}>Item 1</Paper>
-        <Paper sx={{p: 2}}>Item 2</Paper>
-        <Paper sx={{p: 2}}>Item 3</Paper>
-      </Stack>
-    );
-  },
-  args: {
-    direction: "row",
-    alignItems: "start"
-  },
-  decorators: [
-    (Story) => {
-      return (
-        <Paper sx={{ width: 500, height: 250 }}>
-          <Story />
-        </Paper>
-      )
-    }
-  ]
-};
-
-export const VerticalCenter: Story = {
-  render: ({ ...props }) => {
-    return (
-      <Stack {...props} height={250}>
-        <Paper sx={{p: 2}}>Item 1</Paper>
-        <Paper sx={{p: 2}}>Item 2</Paper>
-        <Paper sx={{p: 2}}>Item 3</Paper>
-      </Stack>
-    );
-  },
-  args: {
-    direction: "row",
-    alignItems: "center",
-  },
-  decorators: [
-    (Story) => {
-      return (
-        <Paper sx={{ width: 500, height: 250 }}>
-          <Story />
-        </Paper>
-      )
-    }
-  ]
-};
-
-export const VerticalEnd: Story = {
-  render: ({ ...props }) => {
-    return (
-      <Stack {...props} height={250}>
-        <Paper sx={{p: 2}}>Item 1</Paper>
-        <Paper sx={{p: 2}}>Item 2</Paper>
-        <Paper sx={{p: 2}}>Item 3</Paper>
-      </Stack>
-    );
-  },
-  args: {
-    direction: "row",
-    alignItems: "end"
-  },
-  decorators: [
-    (Story) => {
-      return (
-        <Paper sx={{ width: 500, height: 250 }}>
-          <Story />
-        </Paper>
-      )
-    }
-  ]
-};
-
-export const VerticalStretch: Story = {
-  render: ({ ...props }) => {
-    return (
-      <Stack {...props} height={250}>
-        <Paper sx={{p: 2}}>Item 1</Paper>
-        <Paper sx={{p: 2}}>Item 2</Paper>
-        <Paper sx={{p: 2}}>Item 3</Paper>
-      </Stack>
-    );
-  },
-  args: {
-    direction: "row",
-    alignItems: "stretch"
-  },
-  decorators: [
-    (Story) => {
-      return (
-        <Paper sx={{ width: 500, height: 250 }}>
-          <Story />
-        </Paper>
-      )
-    }
-  ]
-};
-
-export const HorizontalStart: Story = {
-  render: ({ ...props }) => {
-    return (
-      <Stack {...props} height={250}>
-        <Paper sx={{p: 2}}>Item 1</Paper>
-        <Paper sx={{p: 2}}>Item 2</Paper>
-        <Paper sx={{p: 2}}>Item 3</Paper>
-      </Stack>
-    );
-  },
-  args: {
-    direction: "row",
-    justifyContent: "start",
-    alignItems: "center"
-  },
-  decorators: [
-    (Story) => {
-      return (
-        <Paper sx={{ width: 500, height: 250 }}>
-          <Story />
-        </Paper>
-      )
-    }
-  ]
-};
-
-export const HorizontalCenter: Story = {
-  render: ({ ...props }) => {
-    return (
-      <Stack {...props} height={250}>
-        <Paper sx={{p: 2}}>Item 1</Paper>
-        <Paper sx={{p: 2}}>Item 2</Paper>
-        <Paper sx={{p: 2}}>Item 3</Paper>
-      </Stack>
-    );
-  },
-  args: {
-    direction: "row",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  decorators: [
-    (Story) => {
-      return (
-        <Paper sx={{ width: 500, height: 250 }}>
-          <Story />
-        </Paper>
-      )
-    }
-  ]
-};
-
-export const HorizontalEnd: Story = {
-  render: ({ ...props }) => {
-    return (
-      <Stack {...props} height={250}>
-        <Paper sx={{p: 2}}>Item 1</Paper>
-        <Paper sx={{p: 2}}>Item 2</Paper>
-        <Paper sx={{p: 2}}>Item 3</Paper>
-      </Stack>
-    );
-  },
-  args: {
-    direction: "row",
-    justifyContent: "end",
-    alignItems: "center"
-  },
-  decorators: [
-    (Story) => {
-      return (
-        <Paper sx={{ width: 500, height: 250 }}>
-          <Story />
-        </Paper>
-      )
-    }
-  ]
-};
-
-export const HorizontalSpaceBetween: Story = {
-  render: ({ ...props }) => {
-    return (
-      <Stack {...props} height={250}>
-        <Paper sx={{p: 2}}>Item 1</Paper>
-        <Paper sx={{p: 2}}>Item 2</Paper>
-        <Paper sx={{p: 2}}>Item 3</Paper>
-      </Stack>
-    );
-  },
-  args: {
-    direction: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  decorators: [
-    (Story) => {
-      return (
-        <Paper sx={{ width: 500, height: 250 }}>
-          <Story />
-        </Paper>
-      )
-    }
-  ]
-};
-
-export const HorizontalSpaceAround: Story = {
-  render: ({ ...props }) => {
-    return (
-      <Stack {...props} height={250}>
-        <Paper sx={{p: 2}}>Item 1</Paper>
-        <Paper sx={{p: 2}}>Item 2</Paper>
-        <Paper sx={{p: 2}}>Item 3</Paper>
-      </Stack>
-    );
-  },
-  args: {
-    direction: "row",
-    justifyContent: "space-around",
-    alignItems: "center"
-  },
-  decorators: [
-    (Story) => {
-      return (
-        <Paper sx={{ width: 500, height: 250 }}>
-          <Story />
-        </Paper>
-      )
-    }
-  ]
-};
-
-// export const Basic: Story = {
-//   render: ({ direction, divider, ...props }) => {
-//     return (
-//       <Stack direction={direction} divider={divider} {...props}>
-//         <Typography>Item 1</Typography>
-//         <Typography>Item 2</Typography>
-//         <Typography>Item 3</Typography>
-//       </Stack>
-//     );
-//   },
-// };

@@ -13,7 +13,34 @@ const meta = {
   decorators: [],
   argTypes: {
     arrow: {
-      type: "boolean",
+      control: "select",
+      options: [false, true],
+    },
+    title: {
+      control: "text",
+    },
+    placement: {
+      control: "select",
+      options: [
+        "bottom-end",
+        "bottom-start",
+        "bottom",
+        "left-end",
+        "left-start",
+        "left",
+        "right-end",
+        "right-start",
+        "right",
+        "top-end",
+        "top-start",
+        "top",
+      ],
+    },
+    enterDelay: {
+      control: "text"
+    },
+    leaveDelay: {
+      control: "text"
     }
   },
   args: {
@@ -34,6 +61,6 @@ export const Basic: Story = {
     );
   },
   args: {
-    children: <Typography>Show tooltip</Typography>
-  }
+    children: <Typography>Show tooltip</Typography>,
+  },
 };

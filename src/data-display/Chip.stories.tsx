@@ -12,6 +12,9 @@ const meta = {
   },
   decorators: [],
   argTypes: {
+    label: {
+      control: "text",
+    },
     variant: {
       control: "select",
       options: ["outlined", "filled"],
@@ -46,9 +49,4 @@ export const WithDelete: Story = {
   render: ({ variant, size, color, label, ...props }) => {
     return <Chip variant={variant} size={size} color={color} label={label} onDelete={() => {}} {...props} />;
   },
-  args: {
-    onDelete: () => {
-
-    }
-  }
 };

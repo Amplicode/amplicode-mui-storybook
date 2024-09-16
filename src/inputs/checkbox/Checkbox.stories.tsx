@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Checkbox, FormControlLabel } from "@mui/material";
-import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import Favorite from '@mui/icons-material/Favorite';
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import Favorite from "@mui/icons-material/Favorite";
 
 const meta = {
   title: "Inputs/Checkbox",
@@ -22,7 +22,15 @@ const meta = {
     },
     color: {
       control: "select",
-      options: ["inherit", "primary", "secondary", "success", "error", "info", "warning"],
+      options: [
+        "inherit",
+        "primary",
+        "secondary",
+        "success",
+        "error",
+        "info",
+        "warning",
+      ],
     },
     size: {
       control: "select",
@@ -42,23 +50,19 @@ type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
   render: ({ ...props }) => {
-    return (
-      <Checkbox {...props} />
-    );
+    return <Checkbox {...props} />;
   },
 };
 
 export const CustomIcon: Story = {
   render: ({ ...props }) => {
-    return (
-      <Checkbox icon={<></>} checkedIcon={<></>} {...props} />
-    );
+    return <Checkbox icon={<></>} checkedIcon={<></>} {...props} />;
   },
   args: {
     defaultChecked: false,
     icon: <FavoriteBorder />,
-    checkedIcon: <Favorite />
-  }
+    checkedIcon: <Favorite />,
+  },
 };
 
 export const Label: Story = {
@@ -71,11 +75,9 @@ export const Label: Story = {
 
 export const Controlled: Story = {
   render: ({ checked, ...props }) => {
-    return (
-      <Checkbox checked={checked} onChange={() => {}} {...props} />
-    );
+    return <Checkbox checked={checked} onChange={() => {}} {...props} />;
   },
   args: {
     checked: true,
-  }
+  },
 };

@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react";
+import { withGlobals } from "./decorators/withGlobals";
 
 const preview: Preview = {
   parameters: {
@@ -7,15 +8,16 @@ const preview: Preview = {
       // expanded: true,
     },
     backgrounds: {
-      default: 'grey',
+      default: "grey",
       values: [
         {
-          name: 'grey',
-          value: '#f5f5f5',
+          name: "grey",
+          value: "#f5f5f5",
         },
       ],
     },
   },
+  decorators: [withGlobals],
 };
 
 export default preview;

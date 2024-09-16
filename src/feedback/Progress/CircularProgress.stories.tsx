@@ -14,10 +14,18 @@ const meta = {
   argTypes: {
     color: {
       control: "select",
-      options: ["inherit", "primary", "secondary", "success", "error", "info", "warning"],
+      options: [
+        "inherit",
+        "primary",
+        "secondary",
+        "success",
+        "error",
+        "info",
+        "warning",
+      ],
     },
     size: {
-      control: "number",
+      control: "text",
     },
   },
   args: {
@@ -31,16 +39,19 @@ type Story = StoryObj<typeof meta>;
 
 export const Indeterminate: Story = {
   render: ({ size, color, ...props }) => {
-    return (
-      <CircularProgress size={size} color={color} />
-    );
+    return <CircularProgress size={size} color={color} />;
   },
 };
 
 export const Determinate: Story = {
   render: ({ size, color, value, ...props }) => {
     return (
-      <CircularProgress variant="determinate" value={value} size={size} color={color} />
+      <CircularProgress
+        variant="determinate"
+        value={value}
+        size={size}
+        color={color}
+      />
     );
   },
   argTypes: {
@@ -48,7 +59,7 @@ export const Determinate: Story = {
       control: {
         type: "number",
         min: 0,
-        max: 100
+        max: 100,
       },
     },
   },

@@ -14,6 +14,10 @@ const meta: Meta<CustomAlertArgs> = {
   },
   decorators: [],
   argTypes: {
+    severity: {
+      control: "select",
+      options: ['success', 'info', 'warning', 'error'],
+    },
     variant: {
       control: "select",
       options: ["standard", "filled", "outlined"],

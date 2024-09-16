@@ -19,7 +19,16 @@ const meta = {
     },
   },
   decorators: [wrapper],
-  argTypes: {},
+  argTypes: {
+    elevation: {
+      control: "select",
+      options: [1, 2, 3, 4, 5, 6, 7, 8],
+    },
+    variant: {
+      control: "select",
+      options: ["elevation", "outlined"],
+    },
+  },
   args: {},
 } satisfies Meta<typeof Paper>;
 
@@ -28,7 +37,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Elevation: Story = {
   render: ({ elevation, ...props }) => {
-    return <Paper sx={{ width: "100%", height: "100%", m: 1 }} elevation={elevation} />;
+    return (
+      <Paper
+        sx={{ width: "100%", height: "100%", m: 1 }}
+        elevation={elevation}
+      ></Paper>
+    );
   },
   args: {
     elevation: 1,
@@ -37,8 +51,12 @@ export const Elevation: Story = {
 
 export const Outlined: Story = {
   render: ({ elevation, ...props }) => {
-    return <Paper sx={{ width: "100%", height: "100%", m: 1 }} variant="outlined" />;
+    return (
+      <Paper
+        sx={{ width: "100%", height: "100%", m: 1 }}
+        variant="outlined"
+      ></Paper>
+    );
   },
-  args: {
-  },
+  args: {},
 };
