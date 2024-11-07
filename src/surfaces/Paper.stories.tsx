@@ -30,6 +30,7 @@ const meta = {
     },
   },
   args: {},
+  tags: ['wrapper']
 } satisfies Meta<typeof Paper>;
 
 export default meta;
