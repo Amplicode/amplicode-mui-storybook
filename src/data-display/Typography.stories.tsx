@@ -70,6 +70,12 @@ export const Heading5: Story = {
   },
 };
 
+export const Heading6: Story = {
+  render: () => {
+    return <Typography variant={"h6"}>Header</Typography>;
+  },
+};
+
 export const Subtitle1: Story = {
   render: () => {
     return <Typography variant={"subtitle1"}>Subtitle</Typography>;
@@ -152,13 +158,3 @@ export const SystemProps: Story = {
     },
   ],
 };
-
-// export const Basic: Story = {
-//   render: ({ variant, ...props }) => {
-//     return (
-//       <Typography variant={variant} {...props}>
-//         Text
-//       </Typography>
-//     );
-//   },
-// };

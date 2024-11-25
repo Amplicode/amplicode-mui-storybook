@@ -17,6 +17,7 @@ import {
   useState,
 } from "react";
 import { VirtuosoGrid } from "react-virtuoso";
+import { GenerationInstructions } from "@amplicode/storybook-extensions";
 
 const meta = {
   title: "Icons",
@@ -61,44 +62,49 @@ export const Basic: Story = {
         {children}
       </Stack>
     );
-
     return (
-      <Box height={"calc(100vh - 40px)"} width={"100%"}>
-        <TextField
-          variant="standard"
-          size="small"
-          label="Search"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setQuery(event.target.value);
-          }}
-        />
-        <VirtuosoGrid
-          data={filteredIcons}
-          style={{ height: "calc(100% - 40px)" }}
-          components={gridComponents}
-          itemContent={(_index, iconName) => {
-            const Icon = icons[iconName as keyof typeof icons];
+      <GenerationInstructions.Exclude>
+        <Box height={"calc(100vh - 40px)"} width={"100%"}>
+          <TextField
+            variant="standard"
+            size="small"
+            label="Search"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setQuery(event.target.value);
+            }}
+          />
+          <VirtuosoGrid
+            data={filteredIcons}
+            style={{ height: "calc(100% - 40px)" }}
+            components={gridComponents}
+            itemContent={(_index, iconName) => {
+              const Icon = icons[iconName as keyof typeof icons];
 
-            return (
-              <ItemWrapper>
-                <div draggable data-amplicode-dnd={iconName}>
-                  <Icon sx={{ cursor: "pointer" }} />
-                </div>
-                <Tooltip title={iconName} placement="top">
-                  <Typography
-                    sx={{ width: "150px" }}
-                    align="center"
-                    variant="caption"
-                    noWrap
+              return (
+                <ItemWrapper>
+                  <div
+                    draggable
+                    data-proceed={"asText"}
+                    data-component={iconName}
                   >
-                    {iconName}
-                  </Typography>
-                </Tooltip>
-              </ItemWrapper>
-            );
-          }}
-        />
-      </Box>
+                    <Icon sx={{ cursor: "pointer" }} />
+                  </div>
+                  <Tooltip title={iconName} placement="top">
+                    <Typography
+                      sx={{ width: "150px" }}
+                      align="center"
+                      variant="caption"
+                      noWrap
+                    >
+                      {iconName}
+                    </Typography>
+                  </Tooltip>
+                </ItemWrapper>
+              );
+            }}
+          />
+        </Box>
+      </GenerationInstructions.Exclude>
     );
   },
 };
