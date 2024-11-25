@@ -10,15 +10,13 @@ const meta = {
       exclude: ["divider"],
     },
   },
-  decorators: [(Story) => <Box width={500}>{Story()}</Box>],
   argTypes: {
     maxWidth: {
       control: "select",
       options: ["xs", "sm", "md", "lg", "xl"],
     },
     fixed: {
-      control: "select",
-      options: [false, true],
+      control: "boolean",
     },
   },
   tags: ["wrapper"],
@@ -32,7 +30,7 @@ export const Fluid: Story = {
   render: ({ ...props }) => {
     return (
       <Container maxWidth={"lg"} {...props}>
-        <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }}>
+        <Box sx={{ bgcolor: "#cfe8fc", height: "100vh", p: 2 }}>
           A fluid container width is bounded by the maxWidth prop value.
         </Box>
       </Container>
@@ -44,7 +42,9 @@ export const Fixed: Story = {
   render: ({ ...props }) => {
     return (
       <Container fixed {...props}>
-        <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }} />
+        <Box sx={{ bgcolor: "#cfe8fc", height: "100vh", p: 2 }}>
+          Responsive container. The max-width matches the min-width of the current breakpoint.
+        </Box>
       </Container>
     );
   },
