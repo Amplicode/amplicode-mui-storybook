@@ -1,16 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button, ButtonOwnProps, styled } from "@mui/material";
+import { Button } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 import AlarmOnIcon from "@mui/icons-material/AlarmOn";
-import AlarmOffIcon from "@mui/icons-material/AlarmOff";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import SendIcon from '@mui/icons-material/Send';
-
-const ICONS_MAP = {
-  AlarmOnIcon: <AlarmOnIcon />,
-  AlarmOffIcon: <AlarmOffIcon />,
-  CloudUploadIcon: <CloudUploadIcon />,
-  SendIcon: <SendIcon />,
-}
 
 const meta = {
   title: "Inputs/Button",
@@ -18,212 +9,147 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  decorators: [],
   argTypes: {
+    // Core Functionality
     variant: {
       control: "select",
-      options: ["contained", "outlined", "text"],
-    },
-    disabled: {
-      control: "boolean",
+      options: ["text", "contained", "outlined"],
+      description: "Defines the button's visual style.",
+      category: "Core Functionality",
     },
     color: {
       control: "select",
-      options: ["inherit", "primary", "secondary", "success", "error", "info", "warning"]
+      options: [
+        "inherit",
+        "primary",
+        "secondary",
+        "success",
+        "error",
+        "info",
+        "warning",
+      ],
+      description: "Defines the button's color theme.",
+      category: "Core Functionality",
     },
     size: {
       control: "select",
-      options: ["small", "medium", "large"]
-    }
+      options: ["small", "medium", "large"],
+      description: "Sets the button size.",
+      category: "Core Functionality",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disables the button, preventing user interaction.",
+      category: "Core Functionality",
+    },
+    fullWidth: {
+      control: "boolean",
+      description:
+        "If true, the button will expand to fill the available width.",
+      category: "Core Functionality",
+    },
+    loading: {
+      control: "boolean",
+      description: "If true, the button will display a loading indicator.",
+      category: "Core Functionality",
+    },
+
+    // Icon Configuration
+    startIcon: {
+      control: "select",
+      // options: { None: null, Send: <SendIcon />, Alarm: <AlarmOnIcon /> },
+      description: "Adds an icon before the button text.",
+      category: "Icon Configuration",
+    },
+    endIcon: {
+      control: "select",
+      // options: { None: null, Send: <SendIcon />, Alarm: <AlarmOnIcon /> },
+      description: "Adds an icon after the button text.",
+      category: "Icon Configuration",
+    },
   },
   args: {
-    variant: "contained",
-    disabled: false,
-    color: "primary",
-    size: "medium",
-  }
+    // variant: "contained",
+    // color: "primary",
+    // size: "medium",
+    // disabled: false,
+    // fullWidth: false,
+    // loading: false,
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/**
- * Simple ready to use story with arguments passed to props
- */
-export const Text: Story = {
-  render: ({ variant, ...props }: ButtonOwnProps) => {
-    return <Button variant={variant} {...props}>Button</Button>;
-  },
-  args: {
-    variant: "text"
+export const Default: Story = {
+  render: ({ ...props }) => {
+    return <Button {...props}>Button</Button>;
   },
 };
 
-/**
- * Simple ready to use story with arguments passed to props
- */
-export const Contained: Story = {
-  render: ({ variant, ...props }: ButtonOwnProps) => {
-    return <Button variant={variant} {...props}>Button</Button>;
-  },
-  parameters: {},
-  args: {
-    variant: "contained"
-  },
-};
-
-/**
- * Simple ready to use story with arguments passed to props
- */
 export const Outlined: Story = {
-  render: ({ variant, ...props }: ButtonOwnProps) => {
-    return <Button variant={variant} {...props}>Button</Button>;
+  render: ({ variant, ...props }) => {
+    return (
+      <Button variant={variant} {...props}>
+        Button
+      </Button>
+    );
   },
-  parameters: {},
   args: {
-    variant: "outlined"
+    variant: "outlined",
   },
 };
 
-/**
- * Simple ready to use story with arguments passed to props
- */
-export const Diabled: Story = {
-  render: ({ disabled, ...props }: ButtonOwnProps) => {
-    return <Button disabled={disabled} {...props}>Button</Button>;
+export const TextButton: Story = {
+  render: ({ ...props }) => {
+    return <Button {...props}>Button</Button>;
   },
   args: {
-    disabled: true
+    variant: "text",
   },
 };
 
-/**
- * Simple ready to use story with arguments passed to props
- */
-export const Color: Story = {
-  render: ({ color, ...props }: ButtonOwnProps) => {
-    return <Button color={color} {...props}>Button</Button>;
+export const Disabled: Story = {
+  render: ({ ...props }) => {
+    return <Button {...props}>Button</Button>;
   },
   args: {
-    color: "secondary",
+    disabled: true,
   },
 };
 
-/**
- * Simple ready to use story with arguments passed to props
- */
-export const Sizes: Story = {
-  render: ({ size, ...props }: ButtonOwnProps) => {
-    return <Button size={size} {...props}>Button</Button>;
+export const WithStartIcon: Story = {
+  render: ({ ...props }) => {
+    return <Button {...props}>Button</Button>;
   },
   args: {
-    size: "large",
+    startIcon: <SendIcon />,
   },
 };
 
-/**
- * Simple ready to use story with arguments passed to props
- */
-export const StartIcon: Story = {
-  render: ({ startIcon, ...props }: ButtonOwnProps) => {
-    return <Button startIcon={startIcon} {...props}>Button</Button>;
-  },
-  argTypes: {
-    startIcon: {
-      options: Object.keys(ICONS_MAP),
-      mapping: ICONS_MAP,
-      control: {
-        type: "select",
-      }
-    }
-  },
-  args: {
-    startIcon: <AlarmOnIcon />,
-  },
-};
-
-/**
- * Simple ready to use story with arguments passed to props
- */
-export const EndIcon: Story = {
-  render: ({ endIcon, ...props }: ButtonOwnProps) => {
-    return <Button endIcon={endIcon} {...props}>Button</Button>;
-  },
-  argTypes: {
-    endIcon: {
-      options: Object.keys(ICONS_MAP),
-      mapping: ICONS_MAP,
-      control: {
-        type: "select",
-      }
-    }
+export const WithEndIcon: Story = {
+  render: ({ ...props }) => {
+    return <Button {...props}>Button</Button>;
   },
   args: {
     endIcon: <AlarmOnIcon />,
   },
 };
 
-/**
- * Ready to use story with inlined props
- */
-export const UploadButton: Story = {
-  render: ({ ...props }: ButtonOwnProps) => {
-    const VisuallyHiddenInput = styled('input')({
-      display: 'none'
-    });
-
-    return (
-      <Button
-        component="label"
-        tabIndex={-1}
-        startIcon={<CloudUploadIcon />}
-        {...props}
-        >
-          Upload file
-          <VisuallyHiddenInput type="file" />
-        </Button>
-    );
-  }
-};
-
-/**
- * Ready to use story with arguments passed to props
- */
-export const SendButton: Story = {
-  render: ({ endIcon, ...props }: ButtonOwnProps) => {
-    return (
-      <Button
-        endIcon={endIcon}
-        {...props}
-        >
-          Send
-        </Button>
-    );
+export const FullWidth: Story = {
+  render: ({ ...props }) => {
+    return <Button {...props}>Full Width</Button>;
   },
   args: {
-    endIcon: <SendIcon />
+    fullWidth: true,
   },
-  parameters: {
-    controls: {
-      exclude: ['endIcon']
-    },
-  }
 };
 
-export const GenericIconButton: Story = {
-  render: ({ startIcon }: ButtonOwnProps) => {
-    return <Button startIcon={startIcon}>Button</Button>;
-  },
-  argTypes: {
-    startIcon: {
-      options: Object.keys(ICONS_MAP),
-      mapping: ICONS_MAP,
-      control: {
-        type: "select",
-      }
-    }
+export const Loading: Story = {
+  render: ({ ...props }) => {
+    return <Button {...props}>Loading...</Button>;
   },
   args: {
-    startIcon: <AlarmOnIcon />,
+    loading: true,
   },
 };
