@@ -19,15 +19,7 @@ const meta = {
     },
     color: {
       control: "select",
-      options: [
-        "inherit",
-        "primary",
-        "secondary",
-        "success",
-        "error",
-        "info",
-        "warning",
-      ],
+      options: ["inherit", "primary", "secondary", "success", "error", "info", "warning"],
       description: "Defines the button's color theme.",
       category: "Core Functionality",
     },
@@ -44,8 +36,7 @@ const meta = {
     },
     fullWidth: {
       control: "boolean",
-      description:
-        "If true, the button will expand to fill the available width.",
+      description: "If true, the button will expand to fill the available width.",
       category: "Core Functionality",
     },
     loading: {
@@ -68,14 +59,6 @@ const meta = {
       category: "Icon Configuration",
     },
   },
-  args: {
-    // variant: "contained",
-    // color: "primary",
-    // size: "medium",
-    // disabled: false,
-    // fullWidth: false,
-    // loading: false,
-  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -89,11 +72,7 @@ export const Default: Story = {
 
 export const Outlined: Story = {
   render: ({ variant, ...props }) => {
-    return (
-      <Button variant={variant} {...props}>
-        Button
-      </Button>
-    );
+    return <Button variant={variant} {...props}>Button</Button>;
   },
   args: {
     variant: "outlined",
@@ -101,8 +80,8 @@ export const Outlined: Story = {
 };
 
 export const TextButton: Story = {
-  render: ({ ...props }) => {
-    return <Button {...props}>Button</Button>;
+  render: ({ variant, ...props }) => {
+    return <Button variant={variant} {...props}>Button</Button>;
   },
   args: {
     variant: "text",
@@ -110,8 +89,8 @@ export const TextButton: Story = {
 };
 
 export const Disabled: Story = {
-  render: ({ ...props }) => {
-    return <Button {...props}>Button</Button>;
+  render: ({ disabled, ...props }) => {
+    return <Button disabled={disabled} {...props}>Button</Button>;
   },
   args: {
     disabled: true,
@@ -119,8 +98,8 @@ export const Disabled: Story = {
 };
 
 export const WithStartIcon: Story = {
-  render: ({ ...props }) => {
-    return <Button {...props}>Button</Button>;
+  render: ({ startIcon, ...props }) => {
+    return <Button startIcon={startIcon} {...props}>Button</Button>;
   },
   args: {
     startIcon: <SendIcon />,
@@ -128,8 +107,8 @@ export const WithStartIcon: Story = {
 };
 
 export const WithEndIcon: Story = {
-  render: ({ ...props }) => {
-    return <Button {...props}>Button</Button>;
+  render: ({ endIcon, ...props }) => {
+    return <Button endIcon={endIcon} {...props}>Button</Button>;
   },
   args: {
     endIcon: <AlarmOnIcon />,
@@ -137,8 +116,8 @@ export const WithEndIcon: Story = {
 };
 
 export const FullWidth: Story = {
-  render: ({ ...props }) => {
-    return <Button {...props}>Full Width</Button>;
+  render: ({ fullWidth, ...props }) => {
+    return <Button fullWidth={fullWidth} {...props}>Full Width</Button>;
   },
   args: {
     fullWidth: true,
@@ -146,8 +125,8 @@ export const FullWidth: Story = {
 };
 
 export const Loading: Story = {
-  render: ({ ...props }) => {
-    return <Button {...props}>Loading...</Button>;
+  render: ({ loading, ...props }) => {
+    return <Button loading={loading} {...props}>Loading...</Button>;
   },
   args: {
     loading: true,
