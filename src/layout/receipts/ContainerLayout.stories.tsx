@@ -13,7 +13,7 @@ import { replaceOnGenerate } from "@amplicode/storybook-extensions";
 import { ArrowDropDown } from "@mui/icons-material";
 
 const meta = {
-  title: "Layout/Receipts/ContainerLayout",
+  title: "Layout/Templates/ContainerLayout",
   // component: Box,
   parameters: {
     layout: "fullscreen",
