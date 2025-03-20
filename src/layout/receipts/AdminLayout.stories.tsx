@@ -2,13 +2,11 @@ import { Meta, StoryObj } from "@storybook/react";
 import {
   Box,
   Stack,
-  Container,
   Typography,
   Accordion,
   AccordionSummary,
   AccordionDetails,
   Drawer,
-  Button,
   AppBar,
   Divider,
   List,
@@ -17,19 +15,21 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  StepIcon,
+  IconButton,
 } from "@mui/material";
-import { useCallback, useState } from "react";
-import { GenerationInstructions } from "@amplicode/storybook-extensions";
+import { useState } from "react";
 import {
+  replaceOnGenerate,
+} from "@amplicode/storybook-extensions";
+import {
+  ArrowBack,
   ArrowDropDown,
-  IceSkatingOutlined,
-  ImportContacts,
   MenuOpen,
+  Menu,
 } from "@mui/icons-material";
 
 const meta = {
-  title: "Layout/Receipts/AdminLayout",
+  title: "Layout/Templates/AdminLayout",
   // component: Box,
   parameters: {
     layout: "fullscreen",
@@ -69,25 +69,40 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: ({ ...props }) => {
-    const [open, setOpen] = useState<undefined | false | true>();
+    const [open, setOpen] = useState<undefined | false | true>(true);
 
     const drawerWidth = 240;
+
+    const handleOpenDrawer = () => {
+      setOpen(true);
+    };
+
+    const handleCloseDrawer = () => {
+      setOpen(false);
+    };
 
     return (
       <Box sx={{ display: "flex" }}>
         <AppBar
           position="fixed"
           sx={{
-            width: `calc(100% - ${drawerWidth}px)`,
-            ml: `${drawerWidth}px`,
+            width: open ? `calc(100% - ${drawerWidth}px)` : "100%",
+            ml: open ? `${drawerWidth}px` : 0,
             background: "#fff",
             boxShadow: "inset 0 0 12px 0px #3170de",
+            transition: "all 225ms",
           }}
         >
           <Toolbar>
-            <Typography variant="h6" noWrap component="div" color={"#3170de"}>
-              Header
-            </Typography>
+            {!open ? (
+              <IconButton
+                color="primary"
+                size="medium"
+                onClick={handleOpenDrawer}
+              >
+                <Menu />
+              </IconButton>
+            ) : null}
           </Toolbar>
         </AppBar>
         <Drawer
@@ -100,19 +115,31 @@ export const Default: Story = {
               boxShadow: "inset 0 0 12px 0px #3170de",
             },
           }}
-          variant="permanent"
+          variant={"persistent"}
+          open={open}
           anchor="left"
         >
           <Toolbar>
-            {" "}
-            <Typography variant="h6" noWrap component="div" color={"#3170de"}>
-              Sidebar
-            </Typography>
+            <Stack
+              direction="row"
+              spacing={2}
+              alignItems="center"
+              justifyContent={"space-between"}
+              flex={1}
+            >
+              <Typography variant="h6" noWrap component="div" color="#3170de">
+                Sidebar
+              </Typography>
+              <IconButton
+                color="primary"
+                size="medium"
+                onClick={handleCloseDrawer}
+              >
+                <ArrowBack />
+              </IconButton>
+            </Stack>
           </Toolbar>
           <Divider />
-          <GenerationInstructions.Exclude>
-            <SidebarContent />
-          </GenerationInstructions.Exclude>
         </Drawer>
         <Box
           component="main"
@@ -122,12 +149,15 @@ export const Default: Story = {
             p: 2,
             boxSizing: "border-box",
             minHeight: "100vh",
+            marginLeft: open ? 0 : `-${drawerWidth}px`,
+            transition: "all 225ms",
           }}
         >
           <Toolbar />
-          <GenerationInstructions.Exclude>
-            <JustLayoutStoryDescription />
-          </GenerationInstructions.Exclude>
+          {replaceOnGenerate(
+            <JustLayoutStoryDescription />,
+            <div>Content</div>
+          )}
         </Box>
       </Box>
     );
