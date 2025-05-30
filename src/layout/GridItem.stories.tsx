@@ -33,31 +33,36 @@ const meta = {
   args: {
     spacing: 2,
   },
+  tags: ["wrapper"],
 } satisfies Meta<typeof Grid>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Full: Story = {
+export const Item: Story = {
   render: ({ ...props }) => {
-    const gridItems = new Array(10).fill(1).map((_, index) => index + 1);
-
     return (
-      <Grid container {...props}>
-        {gridItems.map((gridItem) => {
-          return (
-            <Grid item xs={3}>
-              <GenerationInstructions.Exclude>
-                <Paper>
-                  <Typography variant="body1" textAlign={"center"} p={2}>
-                    Item {gridItem}
-                  </Typography>
-                </Paper>
-              </GenerationInstructions.Exclude>
-            </Grid>
-          );
-        })}
+      <Grid item xs={3}>
+        <GenerationInstructions.Exclude>
+          <Paper>
+            <Typography variant="body1" textAlign={"center"} p={2}>
+              Component to wrap with Grid item
+            </Typography>
+          </Paper>
+        </GenerationInstructions.Exclude>
       </Grid>
     );
   },
+  decorators: [
+    (Story) => {
+      const gridItems = new Array(10).fill(1).map((_, index) => index + 1);
+      return (
+        <Grid container spacing={2}>
+          {gridItems.map(() => {
+            return Story();
+          })}
+        </Grid>
+      );
+    },
+  ],
 };

@@ -5,7 +5,7 @@ const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
-      // expanded: true,
+      expanded: true,
     },
     backgrounds: {
       default: "grey",
@@ -18,6 +18,7 @@ const preview: Preview = {
     },
   },
   decorators: [withGlobals],
+  tags: ['autodocs'],
 };
 
 export default preview;
