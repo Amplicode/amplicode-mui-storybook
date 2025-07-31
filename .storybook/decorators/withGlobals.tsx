@@ -17,7 +17,7 @@ export const withGlobals = (StoryFn: any, context: StoryContext<Renderer>) => {
         event.dataTransfer.setData(
           "application/vnd.code.tree.amplicode.palette",
           JSON.stringify({
-            amplicodeDnd: event.target.dataset,
+            previewDnd: event.target.dataset,
             itemHandles: [window.location.search.split("&")[0].split("=")[1]],
           })
         );

@@ -40,7 +40,7 @@ export const Default: Story = {
             alignItems: 'center',
             minHeight: theme.spacing(10),
             background: "#fff",
-            boxShadow: "inset 0 0 12px 0px #3170de",
+            // boxShadow: "inset 0 0 12px 0px #3170de",
             position: "sticky",
             width: "100%",
             top: 0,

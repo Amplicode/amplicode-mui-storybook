@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box, Link, Paper, Typography } from "@mui/material";
+import {
+  topLevel,
+} from "@amplicode/storybook-extensions";
+
+const Test = () => {};
 
 const meta = {
   title: "DataDisplay/Typography",
   component: Typography,
   parameters: {
     layout: "centered",
+    studioMeta: {
+      kind: "multiple",
+    },
   },
   decorators: [],
   argTypes: {
@@ -30,6 +38,14 @@ const meta = {
     noWrap: {
       control: "select",
       options: [false, true],
+    },
+    onClick: {
+      control: "select",
+      options: ["default", "genTest"],
+      mapping: {
+        default: undefined,
+        genTest: topLevel(Test),
+      },
     },
   },
   args: {

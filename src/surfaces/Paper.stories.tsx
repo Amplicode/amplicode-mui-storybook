@@ -30,7 +30,7 @@ const meta = {
     },
   },
   args: {},
-  tags: ['wrapper']
+  tags: ["wrapper"],
 } satisfies Meta<typeof Paper>;
 
 export default meta;
@@ -40,7 +40,7 @@ export const Elevation: Story = {
   render: ({ elevation, ...props }) => {
     return (
       <Paper
-        sx={{ width: "100%", height: "100%", m: 1 }}
+        sx={{ width: "100%", height: "100%", p: 1, boxSizing: "border-box" }}
         elevation={elevation}
       ></Paper>
     );
@@ -54,7 +54,7 @@ export const Outlined: Story = {
   render: ({ elevation, ...props }) => {
     return (
       <Paper
-        sx={{ width: "100%", height: "100%", m: 1 }}
+        sx={{ width: "100%", height: "100%", p: 1, boxSizing: "border-box" }}
         variant="outlined"
       ></Paper>
     );

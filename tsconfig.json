@@ -7,12 +7,15 @@
     "noEmit": true,
     "isolatedModules": true,
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
-    "skipLibCheck": true,
+    // "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "baseUrl": "./src",
+    // "baseUrl": "./src",
+    // "typeRoots": ["node_modules/@amplicode/storybook-extensions/out"]
   },
-  "include": ["src", ".storybook/**/*"]
+  "include": ["src", ".storybook/**/*", 
+  "node_modules/@amplicode/storybook-extensions/out"
+]
 }
