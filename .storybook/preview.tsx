@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react";
 import { withGlobals } from "./decorators/withGlobals";
+import { withDraggable } from "./decorators/withDraggable";
 
 const preview: Preview = {
   parameters: {
@@ -17,7 +18,7 @@ const preview: Preview = {
       ],
     },
   },
-  decorators: [withGlobals],
+  decorators: [withGlobals, withDraggable],
   tags: ['autodocs'],
 };
 

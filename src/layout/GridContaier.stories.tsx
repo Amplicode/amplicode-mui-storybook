@@ -39,29 +39,36 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Item: Story = {
+export const Contaier: Story = {
   render: ({ ...props }) => {
     return (
-      <Grid size={{ xs: 12, lg: 3 }}>
+      <Grid container>
         <GenerationInstructions.Exclude>
-          <Paper>
-            <Typography variant="body1" textAlign={"center"} p={2}>
-              Component to wrap with Grid item
-            </Typography>
-          </Paper>
+          {new Array(10)
+            .fill(1)
+            .map((_, index) => index + 1)
+            .map((item) => {
+              return (
+                <Grid size={3}>
+                  <Typography variant="body1" textAlign={"center"} p={2}>
+                    Demo {item}
+                  </Typography>
+                </Grid>
+              );
+            })}
         </GenerationInstructions.Exclude>
       </Grid>
     );
   },
   decorators: [
     (Story) => {
-      const gridItems = new Array(10).fill(1).map((_, index) => index + 1);
       return (
-        <Grid container spacing={2}>
-          {gridItems.map(() => {
-            return Story();
-          })}
-        </Grid>
+        <Paper>
+          <Typography variant="body1" textAlign={"center"} p={2}>
+            Component to wrap node with Grid container
+          </Typography>
+          {Story()}
+        </Paper>
       );
     },
   ],

@@ -25,11 +25,22 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@amplicode/storybook-extensions": "^0.9.0",
+    "@amplicode/storybook-extensions": "^1.0.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.16.7",
-    "@mui/material": "^5.16.7",
+    "@mui/icons-material": "^7.2.0",
+    "@mui/material": "^7.2.0",
+    "@mui/x-charts": "^8.9.0",
+    "@mui/x-charts-pro": "^8.9.0",
+    "@mui/x-data-grid": "^8.9.1",
+    "@mui/x-data-grid-generator": "^8.9.1",
+    "@mui/x-data-grid-premium": "^8.9.1",
+    "@mui/x-data-grid-pro": "^8.9.1",
+    "@mui/x-date-pickers": "^8.9.2",
+    "@mui/x-date-pickers-pro": "^8.9.2",
+    "@mui/x-tree-view": "^8.9.2",
+    "@react-spring/web": "^10.0.1",
+    "@storybook/client-api": "^7.6.17",
     "react-virtuoso": "^4.10.2",
     "typescript": "^5.3.3"
   },
@@ -45,6 +56,7 @@
     "@storybook/types": "^8.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^7.8.0",
     "storybook": "^8.2.9"
   },
   "optionalDependencies": {

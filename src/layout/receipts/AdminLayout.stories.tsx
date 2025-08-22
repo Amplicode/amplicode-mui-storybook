@@ -18,15 +18,8 @@ import {
   IconButton,
 } from "@mui/material";
 import { useState } from "react";
-import {
-  replaceOnGenerate,
-} from "@amplicode/storybook-extensions";
-import {
-  ArrowBack,
-  ArrowDropDown,
-  MenuOpen,
-  Menu,
-} from "@mui/icons-material";
+import { replaceOnGenerate } from "@amplicode/storybook-extensions";
+import { ArrowBack, ArrowDropDown, MenuOpen, Menu } from "@mui/icons-material";
 
 const meta = {
   title: "Layout/Templates/AdminLayout",
@@ -71,95 +64,90 @@ export const Default: Story = {
   render: ({ ...props }) => {
     const [open, setOpen] = useState<undefined | false | true>(true);
 
-    const drawerWidth = 240;
+    const openedDrawerWidth = 240;
+    const closedDrawerWidth = 64;
 
-    const handleOpenDrawer = () => {
-      setOpen(true);
-    };
-
-    const handleCloseDrawer = () => {
-      setOpen(false);
+    const toggleOpenDrawer = () => {
+      setOpen((prevState) => !prevState);
     };
 
     return (
-      <Box sx={{ display: "flex" }}>
-        <AppBar
-          position="fixed"
-          sx={{
-            width: open ? `calc(100% - ${drawerWidth}px)` : "100%",
-            ml: open ? `${drawerWidth}px` : 0,
-            background: "#fff",
-            boxShadow: "inset 0 0 12px 0px #3170de",
-            transition: "all 225ms",
-          }}
-        >
-          <Toolbar>
-            {!open ? (
+      <>
+        <Box sx={{ display: "flex" }}>
+          <AppBar
+            position="fixed"
+            sx={(theme) => ({
+              width: open
+                ? `calc(100% - ${openedDrawerWidth}px)`
+                : `calc(100% - ${closedDrawerWidth}px)`,
+              ml: open ? `${openedDrawerWidth}px` : `${closedDrawerWidth}px`,
+              background: theme.palette.background.default,
+              boxShadow: "none",
+              border: "none",
+              borderBottom: `1px solid ${theme.palette.divider}`,
+              transition: "all 225ms",
+            })}
+          >
+            <Toolbar>
+              <img src="vite.svg" alt="" />
+            </Toolbar>
+          </AppBar>
+          <Drawer
+            sx={(theme) => ({
+              width: open ? openedDrawerWidth : closedDrawerWidth,
+              flexShrink: 0,
+              transition: "all 225ms",
+              overflowX: "hidden",
+              "& .MuiDrawer-paper": {
+                width: open ? openedDrawerWidth : closedDrawerWidth,
+                boxSizing: "border-box",
+                transition: "all 225ms",
+                background: theme.palette.background.default,
+              },
+            })}
+            variant={"permanent"}
+            open={open}
+            anchor="left"
+          >
+            <Toolbar>
               <IconButton
                 color="primary"
                 size="medium"
-                onClick={handleOpenDrawer}
+                onClick={toggleOpenDrawer}
+                sx={(theme) => ({
+                  position: "absolute",
+                  left: theme.spacing(1.5),
+                })}
               >
                 <Menu />
               </IconButton>
-            ) : null}
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-            "& .MuiDrawer-paper": {
-              width: drawerWidth,
+            </Toolbar>
+            <Divider />
+            <Box
+              sx={(theme) => ({ my: theme.spacing(2.5), overflowX: "hidden" })}
+            ></Box>
+          </Drawer>
+          <Box
+            component="main"
+            sx={{
+              width: open
+                ? `calc(100% - ${openedDrawerWidth}px)`
+                : `calc(100% - ${closedDrawerWidth}px)`,
+              flexGrow: 1,
+              bgcolor: "#fff",
+              p: 2,
               boxSizing: "border-box",
-              boxShadow: "inset 0 0 12px 0px #3170de",
-            },
-          }}
-          variant={"persistent"}
-          open={open}
-          anchor="left"
-        >
-          <Toolbar>
-            <Stack
-              direction="row"
-              spacing={2}
-              alignItems="center"
-              justifyContent={"space-between"}
-              flex={1}
-            >
-              <Typography variant="h6" noWrap component="div" color="#3170de">
-                Sidebar
-              </Typography>
-              <IconButton
-                color="primary"
-                size="medium"
-                onClick={handleCloseDrawer}
-              >
-                <ArrowBack />
-              </IconButton>
-            </Stack>
-          </Toolbar>
-          <Divider />
-        </Drawer>
-        <Box
-          component="main"
-          sx={{
-            flexGrow: 1,
-            bgcolor: "#fff",
-            p: 2,
-            boxSizing: "border-box",
-            minHeight: "100vh",
-            marginLeft: open ? 0 : `-${drawerWidth}px`,
-            transition: "all 225ms",
-          }}
-        >
-          <Toolbar />
-          {replaceOnGenerate(
-            <JustLayoutStoryDescription />,
-            <div>Content</div>
-          )}
+              minHeight: "100vh",
+            }}
+          >
+            <Toolbar />
+            {replaceOnGenerate(
+              <JustLayoutStoryDescription />,
+              <div>Content</div>
+            )}
+          </Box>
         </Box>
-      </Box>
+      </>
     );
   },
 };
@@ -183,7 +171,7 @@ const SidebarContent = () => {
 
 const JustLayoutStoryDescription = () => {
   return (
-    <Box sx={(theme) => ({ p: 2 })}>
+    <Box sx={(theme) => ({ px: 2 })}>
       <Typography variant="h6">Admin layout</Typography>
       <Typography variant={"body2"}>
         This type of layout is widely used for admin panels, control panels, and

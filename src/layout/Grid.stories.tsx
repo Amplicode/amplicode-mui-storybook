@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Paper, styled, Grid, Typography } from "@mui/material";
-import { GenerationInstructions } from "@amplicode/storybook-extensions";
+import { Box, Paper, Grid, Typography } from "@mui/material";
+import {
+  GenerationInstructions,
+  replaceOnGenerate,
+} from "@amplicode/storybook-extensions";
 
 const meta = {
   title: "Layout/Grid",
@@ -38,15 +41,52 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Full: Story = {
+export const FullStatic: Story = {
   render: ({ ...props }) => {
-    const gridItems = new Array(10).fill(1).map((_, index) => index + 1);
-
     return (
       <Grid container {...props}>
-        {gridItems.map((gridItem) => {
+        <Grid size={{ xs: 12, lg: 3 }}>
+          <GenerationInstructions.Exclude>
+            <Paper>
+              <Typography variant="body1" textAlign={"center"} p={2}>
+                Item 1
+              </Typography>
+            </Paper>
+          </GenerationInstructions.Exclude>
+        </Grid>
+        <Grid size={{ xs: 12, lg: 3 }}>
+          <GenerationInstructions.Exclude>
+            <Paper>
+              <Typography variant="body1" textAlign={"center"} p={2}>
+                Item 2
+              </Typography>
+            </Paper>
+          </GenerationInstructions.Exclude>
+        </Grid>
+        <Grid size={{ xs: 12, lg: 3 }}>
+          <GenerationInstructions.Exclude>
+            <Paper>
+              <Typography variant="body1" textAlign={"center"} p={2}>
+                Item 3
+              </Typography>
+            </Paper>
+          </GenerationInstructions.Exclude>
+        </Grid>
+      </Grid>
+    );
+  },
+};
+
+export const FullLoop: Story = {
+  render: ({ ...props }) => {
+    return (
+      <Grid container {...props}>
+        {replaceOnGenerate(
+          new Array(10).fill(1).map((_, index) => index + 1),
+          []
+        ).map((gridItem) => {
           return (
-            <Grid item xs={3}>
+            <Grid size={{ xs: 12, lg: 3 }}>
               <GenerationInstructions.Exclude>
                 <Paper>
                   <Typography variant="body1" textAlign={"center"} p={2}>
