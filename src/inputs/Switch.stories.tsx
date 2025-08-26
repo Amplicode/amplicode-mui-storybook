@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Switch, Box, Typography, FormControlLabel } from "@mui/material";
 import { useState } from "react";
 

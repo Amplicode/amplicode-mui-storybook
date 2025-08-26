@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, ButtonOwnProps, styled } from "@mui/material";
 import AlarmOnIcon from "@mui/icons-material/AlarmOn";
 import AlarmOffIcon from "@mui/icons-material/AlarmOff";

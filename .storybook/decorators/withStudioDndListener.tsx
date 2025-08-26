@@ -1,8 +1,7 @@
-import type { Renderer, StoryContext } from "@storybook/types";
-
 import { useEffect } from "@storybook/preview-api";
+import { PartialStoryFn } from "storybook/internal/types";
 
-export const withGlobals = (StoryFn: any, context: StoryContext<Renderer>) => {
+export const withStudioDndListener = (StoryFn: PartialStoryFn) => {
   useEffect(() => {
     window.addEventListener("dragstart", (event: DragEvent) => {
       if (

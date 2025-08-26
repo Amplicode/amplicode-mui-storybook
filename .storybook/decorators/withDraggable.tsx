@@ -1,13 +1,13 @@
 import { Draggable } from "@amplicode/storybook-extensions";
-import type { Renderer, StoryContext } from "@storybook/types";
+import { StoryContext } from "@storybook/react-vite";
+import { PartialStoryFn } from "storybook/internal/types";
 
 const WITH_OWN_DND_LOGIC = ["icons--basic"];
 
 export const withDraggable = (
-  StoryFn: any,
-  context: StoryContext<Renderer>
+  StoryFn: PartialStoryFn,
+  context: StoryContext
 ) => {
-  console.error('context', context)
   if (WITH_OWN_DND_LOGIC.includes(context.id)) {
     return StoryFn();
   }

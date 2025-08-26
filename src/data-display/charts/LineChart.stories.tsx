@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { LineChart } from '@mui/x-charts/LineChart';
 import type { LineChartProps } from '@mui/x-charts/LineChart';
 
@@ -11,6 +11,9 @@ const meta: Meta<LineChartProps> = {
       description: {
         component: 'LineChart visualizes data trends over time or continuous values.',
       },
+    },
+    studioMeta: {
+      npmDeps: [{ name: "@mui/x-charts", version: '8' }],
     },
   },
 };

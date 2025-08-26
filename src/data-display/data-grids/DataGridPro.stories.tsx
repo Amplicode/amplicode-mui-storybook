@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import Box from "@mui/material/Box";
 import { DataGridPro } from "@mui/x-data-grid-pro";
 import { useDemoData } from "@mui/x-data-grid-generator";

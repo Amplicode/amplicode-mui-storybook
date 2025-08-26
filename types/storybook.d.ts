@@ -1,4 +1,4 @@
-// import "@storybook/react";
+// import "@storybook/react-vite";
 
 // type NpmDep = {
 //   name: string;
@@ -41,7 +41,7 @@
 //   | CompletionParams
 //   | ComponentNameParams
 
-// declare module "@storybook/react" {
+// declare module "@storybook/react-vite" {
 //   interface Parameters extends ExtendedParams {
 //     studioMeta?: StudioMetaParams;
 //   }
