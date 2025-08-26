@@ -9,6 +9,26 @@ const config: StorybookConfig = {
         name: "@storybook/react-vite",
         options: {},
     },
-    staticDirs: ['../public']
+    staticDirs: ['../public'],
+    async viteFinal(baseConfig) {
+        return {
+            ...baseConfig,
+            build: {
+                ...(baseConfig.build ?? {}),
+                rollupOptions: {
+                    ...(baseConfig.build?.rollupOptions ?? {}),
+                    onwarn(warning, defaultHandler) {
+                        if (
+                            warning.message &&
+                            warning.message.includes('Module level directives cause errors when bundled, "use client"')
+                        ) {
+                            return;
+                        }
+                        defaultHandler(warning);
+                    },
+                },
+            },
+        };
+    },
 };
 export default config;
