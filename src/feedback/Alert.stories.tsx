@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Alert, Button } from "@mui/material";
 import { GenerationInstructions } from "@amplicode/storybook-extensions";
 import { useState } from "react";

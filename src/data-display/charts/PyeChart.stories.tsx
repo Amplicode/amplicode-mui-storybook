@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PieChart } from "@mui/x-charts/PieChart";
 import type { PieChartProps } from "@mui/x-charts/PieChart";
 
@@ -11,6 +11,9 @@ const meta: Meta<PieChartProps> = {
       description: {
         component: "PieChart visualizes parts of a whole using slices.",
       },
+    },
+    studioMeta: {
+      npmDeps: [{ name: "@mui/x-charts", version: '8' }],
     },
   },
 };

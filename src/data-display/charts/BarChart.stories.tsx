@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { BarChartPro } from "@mui/x-charts-pro/BarChartPro";
 
 const meta: Meta = {
@@ -131,6 +131,7 @@ export const Basic: Story = {
 
     return (
       <BarChartPro
+        width={600}
         height={300}
         xAxis={[{ data: points.map((v, i) => i), zoom: true }]}
         series={series}

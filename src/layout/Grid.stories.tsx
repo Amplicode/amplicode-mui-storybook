@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Box, Paper, Grid, Typography } from "@mui/material";
 import {
   GenerationInstructions,

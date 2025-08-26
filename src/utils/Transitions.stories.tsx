@@ -1,5 +1,5 @@
 import { Box, Button, Fade, Grow, Slide, Zoom } from "@mui/material";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useArgs } from '@storybook/client-api';
 
 const wrapper = (Story: any, context: any) => {
@@ -31,9 +31,7 @@ const meta = {
     layout: "centered",
     docs: {
       description: {
-        component: `Material UI provides simple wrapper components for CSS transitions. 
-                    They help you animate the appearance and disappearance of elements with a consistent API.
-                    For more details, see: https://mui.com/material-ui/transitions/
+        component: `Material UI provides simple wrapper components for CSS transitions. They help you animate the appearance and disappearance of elements with a consistent API. For more details, see: https://mui.com/material-ui/transitions/
         `,
       },
     },

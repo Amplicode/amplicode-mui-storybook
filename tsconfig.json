@@ -13,7 +13,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     // "baseUrl": "./src",
-    // "typeRoots": ["node_modules/@amplicode/storybook-extensions/out"]
   },
   "include": ["src", ".storybook/**/*", 
   "node_modules/@amplicode/storybook-extensions/out"

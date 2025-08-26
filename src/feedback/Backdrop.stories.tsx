@@ -1,5 +1,5 @@
 import { useArgs } from '@storybook/preview-api';
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Backdrop, Box, Button, CircularProgress, Typography } from "@mui/material";
 import { useEffect } from 'react';
 

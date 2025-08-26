@@ -1,5 +1,5 @@
-import type { Preview } from "@storybook/react";
-import { withGlobals } from "./decorators/withGlobals";
+import type { Preview } from "@storybook/react-vite";
+import { withStudioDndListener } from "./decorators/withStudioDndListener";
 import { withDraggable } from "./decorators/withDraggable";
 
 const preview: Preview = {
@@ -18,7 +18,7 @@ const preview: Preview = {
       ],
     },
   },
-  decorators: [withGlobals, withDraggable],
+  decorators: [withStudioDndListener, withDraggable],
   tags: ['autodocs'],
 };
 

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Popover, Button, Typography, Box } from "@mui/material";
 import { useState } from "react";
 import { GenerationInstructions } from "@amplicode/storybook-extensions";
@@ -9,8 +9,7 @@ const meta: Meta<typeof Popover> = {
   parameters: {
     docs: {
       description: {
-        component: `The <code>Popover</code> component displays content on top of another element, anchored to it.
-          <p>It is typically used for contextual menus, tooltips, or additional information triggered by user actions.</p>`,
+        component: `The <code>Popover</code> component displays content on top of another element, anchored to it. It is typically used for contextual menus, tooltips, or additional information triggered by user actions.`,
       },
     },
   },

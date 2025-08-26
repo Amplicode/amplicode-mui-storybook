@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Rating, Box, Typography, styled } from "@mui/material";
 import { useState } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";

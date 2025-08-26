@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DataGrid, type GridColDef, type GridRowsProp } from "@mui/x-data-grid";
 
 type DataGridProps = {

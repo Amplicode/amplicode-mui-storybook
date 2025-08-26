@@ -1,5 +1,5 @@
 import { Box, Paper } from "@mui/material";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const wrapper = (Story: () => React.JSX.Element) => {
   return (

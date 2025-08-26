@@ -1,6 +1,6 @@
 import { GenerationInstructions } from "@amplicode/storybook-extensions";
 import { Box, Button } from "@mui/material";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { BrowserRouter, MemoryRouter, Route, Routes } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 
