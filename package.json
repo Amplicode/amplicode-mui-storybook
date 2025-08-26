@@ -40,6 +40,7 @@
     "@mui/x-date-pickers-pro": "^8.9.2",
     "@mui/x-tree-view": "^8.9.2",
     "@react-spring/web": "^10.0.1",
+    "@storybook/addon-docs": "^9.1.3",
     "@storybook/client-api": "^7.6.17",
     "react-virtuoso": "^4.10.2",
     "typescript": "^5.3.3"
