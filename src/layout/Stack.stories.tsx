@@ -57,7 +57,7 @@ const meta = {
       control: "boolean"
     },
   },
-  tags: ["wrapper"],
+  tags: ["wrapper", "align"],
   args: {
     direction: "column",
     spacing: 2,
