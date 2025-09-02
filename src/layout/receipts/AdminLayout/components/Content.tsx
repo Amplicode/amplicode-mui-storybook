@@ -1,175 +1,41 @@
-import { Meta, StoryObj } from "@storybook/react-vite";
+import { replaceOnGenerate } from "@amplicode/storybook-extensions";
+import { ArrowDropDown } from "@mui/icons-material";
 import {
   Box,
-  Stack,
   Typography,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Drawer,
-  AppBar,
-  Divider,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Toolbar,
-  IconButton,
 } from "@mui/material";
-import { useState } from "react";
-import { replaceOnGenerate } from "@amplicode/storybook-extensions";
-import { ArrowBack, ArrowDropDown, MenuOpen, Menu } from "@mui/icons-material";
+import { CommonProps } from "../model/types";
 
-const meta = {
-  title: "Layout/Templates/AdminLayout",
-  // component: Box,
-  parameters: {
-    layout: "fullscreen",
-    controls: {
-      exclude: ["divider"],
-    },
-  },
-  decorators: [
-    (Story) => {
-      return (
-        // <Box
-        //   sx={(theme) => ({
-        //     height: "80vh",
-        //     width: "80%",
-        //     position: "absolute",
-        //     top: 0,
-        //     right: 0,
-        //     left: 0,
-        //     bottom: 0,
-        //     margin: "auto",
-        //     overflow: "hidden",
-        //     overflowY: "auto",
-        //     border: "1px solid #3170de",
-        //     // color: "#3170de",
-        //   })}
-        // >
-        <Story />
-        // </Box>
-      );
-    },
-  ],
-} satisfies Meta;
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
-  render: ({ ...props }) => {
-    const [open, setOpen] = useState<undefined | false | true>(true);
-
-    const openedDrawerWidth = 240;
-    const closedDrawerWidth = 64;
-
-    const toggleOpenDrawer = () => {
-      setOpen((prevState) => !prevState);
-    };
-
-    return (
-      <>
-        <Box sx={{ display: "flex" }}>
-          <AppBar
-            position="fixed"
-            sx={(theme) => ({
-              width: open
-                ? `calc(100% - ${openedDrawerWidth}px)`
-                : `calc(100% - ${closedDrawerWidth}px)`,
-              ml: open ? `${openedDrawerWidth}px` : `${closedDrawerWidth}px`,
-              background: theme.palette.background.default,
-              boxShadow: "none",
-              border: "none",
-              borderBottom: `1px solid ${theme.palette.divider}`,
-              transition: "all 225ms",
-            })}
-          >
-            <Toolbar>
-              <img src="vite.svg" alt="" />
-            </Toolbar>
-          </AppBar>
-          <Drawer
-            sx={(theme) => ({
-              width: open ? openedDrawerWidth : closedDrawerWidth,
-              flexShrink: 0,
-              transition: "all 225ms",
-              overflowX: "hidden",
-              "& .MuiDrawer-paper": {
-                width: open ? openedDrawerWidth : closedDrawerWidth,
-                boxSizing: "border-box",
-                transition: "all 225ms",
-                background: theme.palette.background.default,
-              },
-            })}
-            variant={"permanent"}
-            open={open}
-            anchor="left"
-          >
-            <Toolbar>
-              <IconButton
-                color="primary"
-                size="medium"
-                onClick={toggleOpenDrawer}
-                sx={(theme) => ({
-                  position: "absolute",
-                  left: theme.spacing(1.5),
-                })}
-              >
-                <Menu />
-              </IconButton>
-            </Toolbar>
-            <Divider />
-            <Box
-              sx={(theme) => ({ my: theme.spacing(2.5), overflowX: "hidden" })}
-            ></Box>
-          </Drawer>
-          <Box
-            component="main"
-            sx={{
-              width: open
-                ? `calc(100% - ${openedDrawerWidth}px)`
-                : `calc(100% - ${closedDrawerWidth}px)`,
-              flexGrow: 1,
-              bgcolor: "#fff",
-              p: 2,
-              boxSizing: "border-box",
-              minHeight: "100vh",
-            }}
-          >
-            <Toolbar />
-            {replaceOnGenerate(
-              <JustLayoutStoryDescription />,
-              <div>Content</div>
-            )}
-          </Box>
-        </Box>
-      </>
-    );
-  },
-};
-
-const SidebarContent = () => {
+export const Content = ({
+  open,
+  openedDrawerWidth,
+  closedDrawerWidth,
+}: CommonProps) => {
   return (
-    <List>
-      {["Menu item 1", "Menu item 2"].map((text, index) => (
-        <ListItem key={text} disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <MenuOpen />
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
+    <Box
+      component="main"
+      sx={{
+        width: open
+          ? `calc(100% - ${openedDrawerWidth}px)`
+          : `calc(100% - ${closedDrawerWidth}px)`,
+        flexGrow: 1,
+        bgcolor: "#fff",
+        padding: 2,
+        boxSizing: "border-box",
+        minHeight: "100vh",
+      }}
+    >
+      <Toolbar />
+      {replaceOnGenerate(<JustLayoutStoryDescription />, <div>Content</div>)}
+    </Box>
   );
 };
 
-const JustLayoutStoryDescription = () => {
+function JustLayoutStoryDescription() {
   return (
     <Box sx={(theme) => ({ px: 2 })}>
       <Typography variant="h6">Admin layout</Typography>
@@ -357,4 +223,4 @@ const JustLayoutStoryDescription = () => {
       </Box>
     </Box>
   );
-};
+}
