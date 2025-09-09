@@ -34,67 +34,40 @@ export const Default: Story = {
           height: replaceOnGenerate("100vh", "100vh"),
         })}
       >
-        <Box
-          sx={(theme) => ({
-            display: 'flex',
-            alignItems: 'center',
-            minHeight: theme.spacing(10),
-            background: "#fff",
-            // boxShadow: "inset 0 0 12px 0px #3170de",
-            position: "sticky",
-            width: "100%",
-            top: 0,
-            left: 0,
-            zIndex: 9,
-          })}
-        >
-          <Toolbar>
-            <Typography variant="h6" noWrap component="div" color={"#3170de"}>
-              Header
-            </Typography>
-          </Toolbar>
-        </Box>
-        <Box
-          sx={(theme) => ({
-            flex: 1,
-            borderLeft: "1px solid #3170de",
-            borderRight: "1px solid #3170de",
-          })}
-        >
-          <Container fixed sx={(theme) => ({ height: "100%" })}>
-            {replaceOnGenerate(
-              <Box
-                sx={(theme) => ({
-                  height: "100%",
-                  boxSizing: "border-box",
-                  background: "#fff",
-                })}
-              >
-                <JustLayoutStoryDescription />
-              </Box>,
-              <Typography variant="subtitle2" textAlign="center">
-                Content
-              </Typography>
-            )}
-          </Container>
-        </Box>
-        <Box
-          sx={(theme) => ({
-            boxShadow: "inset 0 0 12px 1px #3170de",
-            py: 2,
-            background: "#fff",
-          })}
-        >
-          <Typography variant={"subtitle2"} textAlign={"center"}>
-            Footer ©
-          </Typography>
-        </Box>
+        <Header />
+        <Content />
+        <Footer />
       </Stack>
     );
   },
 };
 
-const JustLayoutStoryDescription = () => {
+function Header() {
+  return (
+    <Box
+      sx={(theme) => ({
+        display: "flex",
+        alignItems: "center",
+        minHeight: theme.spacing(10),
+        background: "#fff",
+        boxShadow: "inset 0 0 12px 0px #3170de",
+        position: "sticky",
+        width: "100%",
+        top: 0,
+        left: 0,
+        zIndex: 9,
+      })}
+    >
+      <Toolbar>
+        <Typography variant="h6" noWrap component="div" color={"#3170de"}>
+          Header
+        </Typography>
+      </Toolbar>
+    </Box>
+  );
+}
+
+function JustLayoutStoryDescription() {
   return (
     <Box sx={(theme) => ({ p: 2 })}>
       <Typography variant="h6">
@@ -268,4 +241,49 @@ const JustLayoutStoryDescription = () => {
       </Box>
     </Box>
   );
-};
+}
+
+function Content() {
+  return (
+    <Box
+      sx={(theme) => ({
+        flex: 1,
+        borderLeft: "1px solid #3170de",
+        borderRight: "1px solid #3170de",
+      })}
+    >
+      <Container fixed sx={(theme) => ({ height: "100%" })}>
+        {replaceOnGenerate(
+          <Box
+            sx={(theme) => ({
+              height: "100%",
+              boxSizing: "border-box",
+              background: "#fff",
+            })}
+          >
+            <JustLayoutStoryDescription />
+          </Box>,
+          <Typography variant="subtitle2" textAlign="center">
+            Content
+          </Typography>
+        )}
+      </Container>
+    </Box>
+  );
+}
+
+function Footer() {
+  return (
+    <Box
+      sx={(theme) => ({
+        boxShadow: "inset 0 0 12px 1px #3170de",
+        py: 2,
+        background: "#fff",
+      })}
+    >
+      <Typography variant={"subtitle2"} textAlign={"center"}>
+        Footer ©
+      </Typography>
+    </Box>
+  );
+}

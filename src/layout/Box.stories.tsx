@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Box, IconButton, styled, Typography } from "@mui/material";
 import { GenerationInstructions } from "@amplicode/storybook-extensions";
 import { PlayCircleFilledWhiteOutlined } from "@mui/icons-material";
+import { StyledBox } from "./components/StyledBox";
 
 const meta = {
   title: "Layout/Box",
@@ -29,14 +30,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const StyledBox = styled(Box, { shouldForwardProp: (prop) => prop !== "p" })(
-  ({ theme }) => ({
-    padding: theme.spacing(4),
-    boxShadow: "inset 0 0 12px 1px #3170de",
-    borderRadius: theme.shape.borderRadius,
-    position: "relative",
-  })
-);
 export const Default: Story = {
   render: ({ ...props }) => {
     return (
@@ -193,6 +186,20 @@ export const AbsoluteBottomAligned: Story = {
       description: {
         story: `<p>Typically used in cards, menus, players, etc. to align controls. It is important to change the parent position to something other than "static", such as "relative".</p>`,
       },
+      source: {
+        code: `
+          <Box
+            {...props}
+            sx={{
+              width: "100%",
+              position: "absolute",
+              left: 0,
+              bottom: 0,
+            }}
+          >
+          </Box>
+        `,
+      },
     },
   },
   tags: ["wrapper", "align", "position", "bottom"],
@@ -258,6 +265,24 @@ export const AbsoluteCenteredFixedSize: Story = {
     docs: {
       description: {
         story: `<p>Typically used in cards, menus, players, etc. to align controls. It is important to change the parent position to something other than "static", such as "relative".</p>`,
+      },
+      source: {
+        code: `
+          <Box
+            {...props}
+            sx={{
+              width: "60px",
+              height: "60px",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              margin: "auto",
+            }}
+          >
+          </Box>
+        `,
       },
     },
   },
@@ -328,6 +353,20 @@ export const AbsoluteCenteredRandomSize: Story = {
     docs: {
       description: {
         story: `<p>Typically used in cards, menus, players, etc. to align controls. It is important to change the parent position to something other than "static", such as "relative".</p>`,
+      },
+      source: {
+        code: `
+          <Box
+            {...props}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+          </Box>
+        `,
       },
     },
   },

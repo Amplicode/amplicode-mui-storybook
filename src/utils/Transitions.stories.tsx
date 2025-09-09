@@ -49,7 +49,7 @@ const meta = {
       options: ["left", "right", "up", "down"],
     },
   },
-  tags: ["wrapper"],
+  tags: ["wrapper", "animate", "move", "visible", "transition"],
 } satisfies Meta;
 
 export default meta;
