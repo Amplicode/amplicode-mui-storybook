@@ -48,13 +48,15 @@ export default meta;
 type Story = StoryObj;
 
 export const BrowserRouterBasic: Story = {
-  render: () => (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<div>Home</div>} />
-      </Routes>
-    </BrowserRouter>
-  ),
+  render: () => {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<div>Home</div>} />
+        </Routes>
+      </BrowserRouter>
+    );
+  },
   parameters: {
     docsOnly: true,
     studioMeta: {
@@ -68,13 +70,15 @@ export const BrowserRouterBasic: Story = {
 };
 
 export const HashRouterBasic: Story = {
-  render: () => (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<div>Home</div>} />
-      </Routes>
-    </HashRouter>
-  ),
+  render: () => {
+    return (
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<div>Home</div>} />
+        </Routes>
+      </HashRouter>
+    );
+  },
   parameters: {
     docsOnly: true,
     studioMeta: {
@@ -88,13 +92,15 @@ export const HashRouterBasic: Story = {
 };
 
 export const MemoryRouterBasic: Story = {
-  render: () => (
-    <MemoryRouter>
-      <Routes>
-        <Route path="/" element={<div>Home</div>} />
-      </Routes>
-    </MemoryRouter>
-  ),
+  render: () => {
+    return (
+      <MemoryRouter>
+        <Routes>
+          <Route path="/" element={<div>Home</div>} />
+        </Routes>
+      </MemoryRouter>
+    );
+  },
   parameters: {
     studioMeta: {
       label: "MemoryRouterBasic",
@@ -143,11 +149,13 @@ export const LinkBasic: Story = {
 };
 
 export const LinkReplaceAndState: Story = {
-  render: () => (
-    <Link to="/settings" replace state={{ from: "home" }}>
-      Settings
-    </Link>
-  ),
+  render: () => {
+    return (
+      <Link to="/settings" replace state={{ from: "home" }}>
+        Settings
+      </Link>
+    );
+  },
   parameters: {
     docsOnly: true,
     studioMeta: {
@@ -174,11 +182,13 @@ export const NavLinkBasic: Story = {
 };
 
 export const NavLinkActiveClass: Story = {
-  render: () => (
-    <NavLink to="/inbox" className={({ isActive }) => (isActive ? "active" : undefined)}>
-      Inbox
-    </NavLink>
-  ),
+  render: () => {
+    return (
+      <NavLink to="/inbox" className={({ isActive }) => (isActive ? "active" : undefined)}>
+        Inbox
+      </NavLink>
+    );
+  },
   parameters: {
     docsOnly: true,
     studioMeta: {
@@ -206,12 +216,14 @@ export const NavigateBasic: Story = {
 };
 
 export const OutletBasic: Story = {
-  render: () => (
-    <div>
-      Parent Layout
-      <Outlet />
-    </div>
-  ),
+  render: () => {
+    return (
+      <div>
+        Parent Layout
+        <Outlet />
+      </div>
+    );
+  },
   parameters: {
     studioMeta: {
       label: "OutletBasic",
@@ -224,12 +236,14 @@ export const OutletBasic: Story = {
 };
 
 export const FormBasic: Story = {
-  render: () => (
-    <Form method="post" action="/contact">
-      <input name="email" type="email" required />
-      <button type="submit">Send</button>
-    </Form>
-  ),
+  render: () => {
+    return (
+      <Form method="post" action="/contact">
+        <input name="email" type="email" required />
+        <button type="submit">Send</button>
+      </Form>
+    );
+  },
   parameters: {
     docsOnly: true,
     studioMeta: {
@@ -243,12 +257,14 @@ export const FormBasic: Story = {
 };
 
 export const RoutesRouteBasic: Story = {
-  render: () => (
-    <Routes>
-      <Route path="/" element={<div>Home</div>} />
-      <Route path="/about" element={<div>About</div>} />
-    </Routes>
-  ),
+  render: () => {
+    return (
+      <Routes>
+        <Route path="/" element={<div>Home</div>} />
+        <Route path="/about" element={<div>About</div>} />
+      </Routes>
+    );
+  },
   parameters: {
     studioMeta: {
       label: "RoutesRouteBasic",

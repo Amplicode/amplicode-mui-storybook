@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Box, Paper, Link } from "@mui/material";
 
 const meta = {
-  title: "DataDisplay/Link",
+  title: "Navigation/Link",
   component: Link,
   parameters: {
     layout: "centered",

@@ -462,13 +462,15 @@ export const UseAsyncError: Story = {
 };
 
 export const BrowserRouterExample: Story = {
-  render: () => (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<div>Page</div>} />
-      </Routes>
-    </BrowserRouter>
-  ),
+  render: () => {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<div>Page</div>} />
+        </Routes>
+      </BrowserRouter>
+    );
+  },
   parameters: {
     studioMeta: {
       label: "BrowserRouterExample",
