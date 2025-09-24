@@ -129,22 +129,22 @@ export const FullLoop: Story = {
   render: ({ ...props }) => {
     return (
       <Grid container {...props}>
-        {replaceOnGenerate(
-          new Array(10).fill(1).map((_, index) => index + 1),
-          []
-        ).map((gridItem) => {
-          return (
-            <Grid size={{ xs: 12, lg: 3 }} key={gridItem}>
-              <GenerationInstructions.Exclude>
-                <StyledBox sx={{ p: 2 }}>
-                  <Typography variant="body1" textAlign={"center"}>
-                    Element {gridItem}
-                  </Typography>
-                </StyledBox>
-              </GenerationInstructions.Exclude>
-            </Grid>
-          );
-        })}
+        {new Array(10)
+          .fill(1)
+          .map((_, index) => index + 1)
+          .map((gridItem) => {
+            return (
+              <Grid size={{ xs: 12, lg: 3 }} key={gridItem}>
+                <GenerationInstructions.Exclude>
+                  <StyledBox sx={{ p: 2 }}>
+                    <Typography variant="body1" textAlign={"center"}>
+                      Element {gridItem}
+                    </Typography>
+                  </StyledBox>
+                </GenerationInstructions.Exclude>
+              </Grid>
+            );
+          })}
       </Grid>
     );
   },

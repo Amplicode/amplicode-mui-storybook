@@ -11,9 +11,12 @@
     "esModuleInterop": true,
     // "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
     // "baseUrl": "./src",
   },
-  "include": ["src", ".storybook/**/*", "node_modules/@amplicode/storybook-extensions/out"
-]
+  "include": [
+    "src",
+    ".storybook/**/*",
+    "node_modules/@amplicode/storybook-extensions/out"
+  ]
 }

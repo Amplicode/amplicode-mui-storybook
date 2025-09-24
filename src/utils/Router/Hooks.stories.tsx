@@ -2,7 +2,6 @@
 import { GenerationInstructions } from "@amplicode/storybook-extensions";
 import { Box, Button, Typography } from "@mui/material";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import React from "react";
 import {
   BrowserRouter,
   MemoryRouter,
@@ -15,15 +14,6 @@ import {
   useSearchParams,
   useLocation,
   useRoutes,
-  // Data APIs below often require a Data Router context; mark as docsOnly in stories
-  useLoaderData,
-  useActionData,
-  useRouteLoaderData,
-  useFetcher,
-  useFetchers,
-  useSubmit,
-  useRevalidator,
-  useRouteError,
   useMatches,
   useMatch,
   useResolvedPath,
@@ -107,7 +97,7 @@ export const UseParams: Story = {
     );
   },
   parameters: {
-    studioMeta: { label: "UseParams", kind: "completion", keywords: ["params", "route", "url", "location"] },
+    studioMeta: { label: "UseParams", kind: "completion", keywords: ["params", "route", "url", "location", "path"] },
     docs: { description: { story: "Key/value pairs of dynamic params matched by the route." } },
   },
   tags: ["!dev"],

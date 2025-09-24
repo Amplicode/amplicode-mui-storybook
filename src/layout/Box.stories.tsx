@@ -7,12 +7,6 @@ import { StyledBox } from "./components/StyledBox";
 const meta = {
   title: "Layout/Box",
   component: Box,
-  argTypes: {
-    width: {
-      options: ["500", "7H"],
-      mapping: { 500: 500, "7H": 700 },
-    },
-  },
   parameters: {
     layout: "centered",
     controls: {
@@ -62,6 +56,7 @@ export const AbsoluteTopAligned: Story = {
           position: "absolute",
           top: 0,
           left: 0,
+          display: "flex"
         }}
       >
         <GenerationInstructions.Exclude>
@@ -134,6 +129,7 @@ export const AbsoluteBottomAligned: Story = {
           position: "absolute",
           left: 0,
           bottom: 0,
+          display: "flex"
         }}
       >
         <GenerationInstructions.Exclude>
@@ -219,6 +215,7 @@ export const AbsoluteCenteredFixedSize: Story = {
           right: 0,
           bottom: 0,
           margin: "auto",
+          display: "flex"
         }}
       >
         <GenerationInstructions.Exclude>
@@ -299,6 +296,7 @@ export const AbsoluteCenteredRandomSize: Story = {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
+          display: "flex"
         }}
       >
         <GenerationInstructions.Exclude>

@@ -34,7 +34,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const RightSidePersistentSidebar: Story = {
   render: ({ ...props }) => {
     const [open, setOpen] = useState<false | true>(true);
 
@@ -48,10 +48,10 @@ export const Default: Story = {
     return (
       <Box sx={{ display: "flex" }}>
         <Header {...{ open, openedDrawerWidth, closedDrawerWidth }} />
+        <Content {...{ open, openedDrawerWidth, closedDrawerWidth }} />
         <Sidebar
           {...{ open, openedDrawerWidth, closedDrawerWidth, toggleOpenDrawer }}
         />
-        <Content {...{ open, openedDrawerWidth, closedDrawerWidth }} />
       </Box>
     );
   },
@@ -67,11 +67,7 @@ type SidebarProps = CommonProps & {
   toggleOpenDrawer: () => void;
 };
 
-function Header({
-  open,
-  openedDrawerWidth,
-  closedDrawerWidth,
-}: CommonProps) {
+function Header({ open, openedDrawerWidth, closedDrawerWidth }: CommonProps) {
   return (
     <AppBar
       position="fixed"
@@ -79,7 +75,7 @@ function Header({
         width: open
           ? `calc(100% - ${openedDrawerWidth}px)`
           : `calc(100% - ${closedDrawerWidth}px)`,
-        marginLeft: open ? `${openedDrawerWidth}px` : `${closedDrawerWidth}px`,
+        marginRight: open ? `${openedDrawerWidth}px` : `${closedDrawerWidth}px`,
         background: theme.palette.background.default,
         boxShadow: "none",
         border: "none",
@@ -105,18 +101,22 @@ function Sidebar({
       sx={(theme) => ({
         width: open ? openedDrawerWidth : closedDrawerWidth,
         flexShrink: 0,
-        transition: "all 225ms",
+        transition: "width 225ms",
         overflowX: "hidden",
         "& .MuiDrawer-paper": {
           width: open ? openedDrawerWidth : closedDrawerWidth,
           boxSizing: "border-box",
-          transition: "all 225ms",
+          transition: "width 225ms",
           background: theme.palette.background.default,
+
+          "[aria-hidden] &": {
+            right: 15,
+          },
         },
       })}
       variant={"permanent"}
       open={open}
-      anchor="left"
+      anchor="right"
     >
       <Toolbar>
         <IconButton
@@ -144,11 +144,7 @@ function Sidebar({
   );
 }
 
-function Content({
-  open,
-  openedDrawerWidth,
-  closedDrawerWidth,
-}: CommonProps) {
+function Content({ open, openedDrawerWidth, closedDrawerWidth }: CommonProps) {
   return (
     <Box
       component="main"
@@ -167,7 +163,7 @@ function Content({
       {replaceOnGenerate(<JustLayoutStoryDescription />, <div>Content</div>)}
     </Box>
   );
-};
+}
 
 function JustLayoutStoryDescription() {
   return (
