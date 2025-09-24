@@ -135,29 +135,26 @@ export const Controlled: Story = {
 };
 
 export const WithCustomIcons: Story = {
-  render: () => (
-    <FormControl>
-      <FormLabel>Favorite color</FormLabel>
-      <RadioGroup defaultValue="love">
-        <FormControlLabel
-          value="love"
-          control={
-            <Radio
+  render: () => {
+    return (
+      <FormControl>
+        <FormLabel>Favorite color</FormLabel>
+        <RadioGroup defaultValue="love">
+          <FormControlLabel
+            value="love"
+            control={<Radio
               icon={<FavoriteBorder />}
               checkedIcon={<Favorite />}
-              color="secondary"
-            />
-          }
-          label="I love it"
-        />
-        <FormControlLabel
-          value="meh"
-          control={<Radio />}
-          label="It's okay"
-        />
-      </RadioGroup>
-    </FormControl>
-  ),
+              color="secondary" />}
+            label="I love it" />
+          <FormControlLabel
+            value="meh"
+            control={<Radio />}
+            label="It's okay" />
+        </RadioGroup>
+      </FormControl>
+    );
+  },
   parameters: {
     docs: {
       description: {

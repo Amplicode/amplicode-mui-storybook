@@ -1,6 +1,9 @@
 import { Box, Button, Fade, Grow, Slide, Zoom } from "@mui/material";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useArgs } from '@storybook/client-api';
+import { useArgs } from "@storybook/client-api";
+import {
+  replaceOnGenerate,
+} from "@amplicode/storybook-extensions";
 
 const wrapper = (Story: any, context: any) => {
   const [{ in: fadeIn }, updateArgs] = useArgs();
@@ -15,9 +18,12 @@ const wrapper = (Story: any, context: any) => {
         justifyContent: "center",
       }}
     >
-      <Button onClick={() => {
-        updateArgs({ in: !fadeIn })
-      }} sx={{ mb: 2 }}>
+      <Button
+        onClick={() => {
+          updateArgs({ in: !fadeIn });
+        }}
+        sx={{ mb: 2 }}
+      >
         Toggle
       </Button>
       <Story />
@@ -49,7 +55,7 @@ const meta = {
       options: ["left", "right", "up", "down"],
     },
   },
-  tags: ["wrapper"],
+  tags: ["wrapper", "animate", "move", "visible", "transition"],
 } satisfies Meta;
 
 export default meta;
@@ -63,14 +69,17 @@ export const FadeStory: Story = {
   render: ({ ...props }) => {
     return (
       <Fade {...props}>
-        <Box
-          sx={{
-            width: 100,
-            height: 100,
-            bgcolor: "primary.main",
-            borderRadius: 2,
-          }}
-        />
+        {replaceOnGenerate(
+          <Box
+            sx={{
+              width: 100,
+              height: 100,
+              bgcolor: "primary.main",
+              borderRadius: 2,
+            }}
+          />,
+          "" as any
+        )}
       </Fade>
     );
   },
@@ -90,18 +99,23 @@ export const FadeStory: Story = {
 };
 
 export const GrowStory: Story = {
-  render: ({ ...props }) => (
+  render: ({ ...props }) => {
+    return (
       <Grow {...props}>
-        <Box
-          sx={{
-            width: 100,
-            height: 100,
-            bgcolor: "secondary.main",
-            borderRadius: 2,
-          }}
-        />
+        {replaceOnGenerate(
+          <Box
+            sx={{
+              width: 100,
+              height: 100,
+              bgcolor: "primary.main",
+              borderRadius: 2,
+            }}
+          />,
+          "" as any
+        )}
       </Grow>
-  ),
+    );
+  },
   name: "Grow",
   parameters: {
     docs: {
@@ -111,24 +125,34 @@ export const GrowStory: Story = {
       },
     },
   },
+  args: {
+    in: true,
+    timeout: 500,
+  },
 };
 
 export const SlideStory: Story = {
-  render: ({ ...props }) => (
+  render: ({ ...props }) => {
+    return (
       <Slide {...props}>
-        <Box
-          sx={{
-            width: 100,
-            height: 100,
-            bgcolor: "success.main",
-            borderRadius: 2,
-          }}
-        />
+        {replaceOnGenerate(
+          <Box
+            sx={{
+              width: 100,
+              height: 100,
+              bgcolor: "primary.main",
+              borderRadius: 2,
+            }}
+          />,
+          "" as any
+        )}
       </Slide>
-  ),
+    );
+  },
   name: "Slide",
   args: {
-    direction: "up",
+    in: true,
+    timeout: 500,
   },
   parameters: {
     docs: {
@@ -141,18 +165,23 @@ export const SlideStory: Story = {
 };
 
 export const ZoomStory: Story = {
-  render: ({ ...props }) => (
-    <Zoom {...props}>
-      <Box
-        sx={{
-          width: 100,
-          height: 100,
-          bgcolor: "error.main",
-          borderRadius: 2,
-        }}
-      />
-    </Zoom>
-  ),
+  render: ({ ...props }) => {
+    return (
+      <Zoom {...props}>
+        {replaceOnGenerate(
+          <Box
+            sx={{
+              width: 100,
+              height: 100,
+              bgcolor: "primary.main",
+              borderRadius: 2,
+            }}
+          />,
+          "" as any
+        )}
+      </Zoom>
+    );
+  },
   name: "Zoom",
   parameters: {
     docs: {
@@ -161,5 +190,9 @@ export const ZoomStory: Story = {
           "Zoom expands or contracts the child from its center point, creating a zoom effect.",
       },
     },
+  },
+  args: {
+    in: true,
+    timeout: 500,
   },
 };

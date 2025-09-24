@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Chip } from "@mui/material";
+import { Chip, Stack } from "@mui/material";
 
 const meta = {
   title: "DataDisplay/Chip",
@@ -7,7 +7,7 @@ const meta = {
   parameters: {
     layout: "centered",
     controls: {
-      exclude: ['onDelete']
+      exclude: ["onDelete"],
     },
   },
   decorators: [],
@@ -30,10 +30,11 @@ const meta = {
   },
   args: {
     variant: "filled",
-    label: 'Chip Info',
+    label: "Chip Info",
     size: "medium",
     color: "primary",
   },
+  tags: ["tag", "label", "achievement"]
 } satisfies Meta<typeof Chip>;
 
 export default meta;
@@ -47,6 +48,35 @@ export const Basic: Story = {
 
 export const WithDelete: Story = {
   render: ({ variant, size, color, label, ...props }) => {
-    return <Chip variant={variant} size={size} color={color} label={label} onDelete={() => {}} {...props} />;
+    return (
+      <Chip
+        variant={variant}
+        size={size}
+        color={color}
+        label={label}
+        onDelete={() => {}}
+        {...props}
+      />
+    );
+  },
+};
+
+export const ChipSet: Story = {
+  render: ({ variant, size, color, label, ...props }) => {
+    return (
+      <Stack spacing={1} direction={"row"}>
+        {['Chip 1', 'Chip&Chip', 'Chip the third'].map((chip) => {
+          return (
+            <Chip
+              variant={variant}
+              size={size}
+              color={color}
+              label={chip}
+              onDelete={() => { } }
+              {...props} />
+          );
+        })}
+      </Stack>
+    );
   },
 };

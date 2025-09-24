@@ -1,0 +1,558 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as HooksStories from './Hooks.stories';
+
+<Meta of={HooksStories} />
+
+# React Router Hooks
+
+---
+
+## `useNavigate`
+
+Returns a function that lets you navigate programmatically in the browser in response to user interactions or effects.
+
+```tsx
+import * as React from "react";
+import { useNavigate } from "react-router";
+
+export function BackButton() {
+  const navigate = useNavigate();
+  return <button onClick={() => navigate(-1)}>Go Back</button>;
+}
+
+export function ReplaceSettings() {
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    navigate("/settings", { replace: true, preventScrollReset: true });
+  }, [navigate]);
+  return null;
+}
+```
+
+---
+
+## `useNavigation`
+
+Returns the current navigation state (e.g., `"idle" | "submitting" | "loading"`). Use it for global pending UI or to read `formData` from a submission.
+
+```tsx
+import { useNavigation } from "react-router";
+
+export function GlobalSpinner() {
+  const navigation = useNavigation();
+  return navigation.state !== "idle" ? <div className="spinner">Loading…</div> : null;
+}
+```
+
+---
+
+## `useParams`
+
+Returns key/value pairs of dynamic params from the current URL. Child routes inherit parent params.
+
+```tsx
+import { useParams } from "react-router";
+
+export function Post() {
+  const { postId } = useParams<{ postId: string }>();
+  return <h1>Post #{postId}</h1>;
+}
+```
+
+---
+
+## `useSearchParams`
+
+Returns `[URLSearchParams, setSearchParams]` for reading/updating the query string (updates cause navigation).
+
+```tsx
+import { useSearchParams } from "react-router";
+
+export function Tabs() {
+  const [sp, setSp] = useSearchParams({ tab: "1" });
+  const tab = sp.get("tab") ?? "1";
+  return (
+    <>
+      <button onClick={() => setSp({ tab: "1" })}>Tab 1</button>
+      <button onClick={() => setSp({ tab: "2" })}>Tab 2</button>
+      <div>Active tab: {tab}</div>
+    </>
+  );
+}
+```
+
+---
+
+## `useLocation`
+
+Returns the current `Location`. Useful for side effects when it changes.
+
+```tsx
+import * as React from "react";
+import { useLocation } from "react-router";
+
+export function Analytics() {
+  const location = useLocation();
+  React.useEffect(() => {
+    // send pageview
+  }, [location]);
+  return null;
+}
+```
+
+---
+
+## `useRoutes`
+
+Hook version of `<Routes>` that uses route objects. Returns an element to render the route tree or `null` if nothing matched.
+
+```tsx
+import * as React from "react";
+import { useRoutes } from "react-router";
+
+export function AppRoutes() {
+  const element = useRoutes([
+    { path: "/", element: <h1>Home</h1> },
+    { path: "about", element: <h1>About</h1> },
+    { path: "posts/:postId", element: <div>Post</div> },
+  ]);
+  return element;
+}
+```
+
+---
+
+## `useLoaderData`
+
+Returns the data from the closest route `loader`/`clientLoader`. After actions run, data revalidates automatically.
+
+```tsx
+import { useLoaderData } from "react-router";
+
+export async function loader() {
+  return { items: ["a", "b", "c"] };
+}
+
+export default function Items() {
+  const { items } = useLoaderData<typeof loader>();
+  return <pre>{JSON.stringify(items, null, 2)}</pre>;
+}
+```
+
+---
+
+## `useActionData`
+
+Returns data from the most recent `POST` navigation to this route’s `action`, or `undefined`.
+
+```tsx
+import { Form, useActionData } from "react-router";
+
+export async function action({ request }: { request: Request }) {
+  const fd = await request.formData();
+  const name = String(fd.get("name") ?? "");
+  if (!name) return { error: "Name is required" };
+  return { message: `Hello, ${name}` };
+}
+
+export default function GreetingForm() {
+  const data = useActionData<typeof action>();
+  return (
+    <>
+      <Form method="post">
+        <input name="name" placeholder="Your name" />
+        <button type="submit">Send</button>
+      </Form>
+      {data?.error && <p role="alert">{data.error}</p>}
+      {data?.message && <p>{data.message}</p>}
+    </>
+  );
+}
+```
+
+---
+
+## `useRouteLoaderData`
+
+Returns loader data for any **rendered** route by its route ID.
+
+```tsx
+import { useRouteLoaderData } from "react-router";
+
+export function CurrentUserBadge() {
+  const rootData = useRouteLoaderData<{ user?: { name: string } }>("root");
+  return <span>{rootData?.user?.name ?? "Guest"}</span>;
+}
+```
+
+---
+
+## `useFetcher`
+
+Interact with loaders/actions **without** causing a navigation. Useful for background refreshes and isolated forms.
+
+```tsx
+import { useFetcher } from "react-router";
+
+export function SubscribeForm() {
+  const fetcher = useFetcher();
+  const busy = fetcher.state !== "idle";
+  return (
+    <fetcher.Form method="post" action="/subscribe">
+      <input type="email" name="email" required />
+      <button disabled={busy}>{busy ? "Subscribing…" : "Subscribe"}</button>
+    </fetcher.Form>
+  );
+}
+```
+
+---
+
+## `useFetchers`
+
+Read all active fetchers. Useful for global loading indicators.
+
+```tsx
+import { useFetchers } from "react-router";
+
+export function AnyBusyIndicator() {
+  const fetchers = useFetchers();
+  return fetchers.some(f => f.state !== "idle") ? <div className="topbar">Working…</div> : null;
+}
+```
+
+---
+
+## `useSubmit`
+
+Programmatically submit forms or `FormData` to a route action.
+
+```tsx
+import { useSubmit } from "react-router";
+
+export function QuickDelete({ id }: { id: string }) {
+  const submit = useSubmit();
+  return (
+    <button onClick={() => submit({ id }, { method: "post", action: "/items/delete" })}>
+      Delete
+    </button>
+  );
+}
+```
+
+---
+
+## `useRevalidator`
+
+Manually revalidate the nearest route data (reruns loaders).
+
+```tsx
+import { useRevalidator } from "react-router";
+
+export function RefreshButton() {
+  const { revalidate, state } = useRevalidator();
+  return (
+    <button onClick={() => revalidate()} disabled={state !== "idle"}>
+      {state === "idle" ? "Refresh Data" : "Refreshing…"}
+    </button>
+  );
+}
+```
+
+---
+
+## `useRouteError`
+
+Access the error thrown by the nearest route error boundary.
+
+```tsx
+import { useRouteError, isRouteErrorResponse } from "react-router";
+
+export default function ErrorBoundary() {
+  const error = useRouteError();
+  if (isRouteErrorResponse(error)) {
+    return <h1>{error.status} — {error.statusText}</h1>;
+  }
+  return <pre>{String(error)}</pre>;
+}
+```
+
+---
+
+## `useMatches`
+
+An array describing all matched routes (id, pathname, params, data, handle, etc.).
+
+```tsx
+import { useMatches, Link } from "react-router";
+
+export function Breadcrumbs() {
+  const matches = useMatches();
+  return (
+    <nav>
+      {matches
+        .filter(m => m.handle?.crumb)
+        .map(m => <span key={m.id}>{m.handle!.crumb(m)}</span>)}
+    </nav>
+  );
+}
+```
+
+---
+
+## `useMatch`
+
+Test the current URL against a path pattern.
+
+```tsx
+import { useMatch } from "react-router";
+
+export function HighlightIfSettings() {
+  const match = useMatch("/settings/*");
+  return <div style={{ fontWeight: match ? 700 : 400 }}>Settings</div>;
+}
+```
+
+---
+
+## `useResolvedPath`
+
+Resolve a relative path against the current route and return a `Path` object.
+
+```tsx
+import { useResolvedPath } from "react-router";
+
+export function DebugResolved() {
+  const p = useResolvedPath("../profile");
+  return <code>{p.pathname}</code>;
+}
+```
+
+---
+
+## `useHref`
+
+Create an absolute `href` (string) for a given `to` value. Useful in custom link components.
+
+```tsx
+import { useHref } from "react-router";
+
+export function RawLink({ to, children }: { to: string; children: React.ReactNode }) {
+  const href = useHref(to);
+  return <a href={href}>{children}</a>;
+}
+```
+
+---
+
+## `useLinkClickHandler`
+
+Get a click handler that performs router navigation (useful for custom anchors).
+
+```tsx
+import * as React from "react";
+import { useLinkClickHandler } from "react-router";
+
+export function Anchor({ to, children }: { to: string; children: React.ReactNode }) {
+  const onClick = useLinkClickHandler(to);
+  return <a href={to} onClick={onClick}>{children}</a>;
+}
+```
+
+---
+
+## `useInRouterContext`
+
+Returns `true` if called within a router provider.
+
+```tsx
+import { useInRouterContext } from "react-router";
+
+export function RouterGuard({ children }: { children: React.ReactNode }) {
+  const ok = useInRouterContext();
+  return ok ? <>{children}</> : <p>Router not found</p>;
+}
+```
+
+---
+
+## `useOutlet`
+
+Renders the element for the current route’s nested child (or `null`).
+
+```tsx
+import { useOutlet } from "react-router";
+
+export function Layout() {
+  const outlet = useOutlet();
+  return (
+    <div>
+      <header>App</header>
+      <main>{outlet}</main>
+    </div>
+  );
+}
+```
+
+---
+
+## `useOutletContext`
+
+Access context provided to child routes via `<Outlet context={...} />`.
+
+```tsx
+import { Outlet, useOutletContext } from "react-router";
+
+type Ctx = { user: { name: string } };
+
+export function Parent() {
+  return <Outlet context={{ user: { name: "Ada" } } satisfies Ctx} />;
+}
+
+export function Child() {
+  const { user } = useOutletContext<Ctx>();
+  return <p>{user.name}</p>;
+}
+```
+
+---
+
+## `useNavigationType`
+
+Returns how the user got to the current location: `"POP" | "PUSH" | "REPLACE"`.
+
+```tsx
+import { useNavigationType } from "react-router";
+
+export function CameFrom() {
+  const type = useNavigationType();
+  return <small>Nav type: {type}</small>;
+}
+```
+
+---
+
+## `useBeforeUnload`
+
+Setup a callback for the window `beforeunload` event (e.g., save state). This does **not** block SPA navigations.
+
+```tsx
+import * as React from "react";
+import { useBeforeUnload } from "react-router";
+
+export function PersistDraft({ when }: { when: boolean }) {
+  useBeforeUnload(
+    React.useCallback((e: BeforeUnloadEvent) => {
+      if (!when) return;
+      localStorage.setItem("draft", JSON.stringify({ /* ... */ }));
+      e.preventDefault();
+      e.returnValue = "";
+    }, [when])
+  );
+  return null;
+}
+```
+
+---
+
+## `useFormAction`
+
+Compute the target `action` URL for a `<Form>` submission.
+
+```tsx
+import { Form, useFormAction } from "react-router";
+
+export function InlineReply({ postId }: { postId: string }) {
+  const action = useFormAction(`/posts/${postId}/reply`);
+  return (
+    <Form method="post" action={action}>
+      <textarea name="body" />
+      <button type="submit">Reply</button>
+    </Form>
+  );
+}
+```
+
+---
+
+## `useScrollRestoration`
+
+Enable/controls scroll restoration on navigation.
+
+```tsx
+import { useScrollRestoration } from "react-router";
+
+export function App() {
+  useScrollRestoration();
+  return null;
+}
+```
+
+---
+
+## `useViewTransitionState`
+
+Returns `true` while a View Transition to the specified location is active.
+
+```tsx
+import { Link, useViewTransitionState } from "react-router";
+
+export function CardLink({ to }: { to: string }) {
+  const transitioning = useViewTransitionState(to);
+  return (
+    <Link to={to} viewTransition className={transitioning ? "is-transitioning" : ""}>
+      Open
+    </Link>
+  );
+}
+```
+
+---
+
+## `useAsyncValue` / `useAsyncError`
+
+Read the value or error from the closest `<Await>` boundary.
+
+```tsx
+import { Await, useAsyncValue, useAsyncError } from "react-router";
+
+function UserInner() {
+  const user = useAsyncValue<{ name: string }>();
+  return <h2>{user.name}</h2>;
+}
+function UserError() {
+  const err = useAsyncError() as Error;
+  return <p role="alert">{err.message}</p>;
+}
+
+export function UserAwait({ promise }: { promise: Promise<unknown> }) {
+  return (
+    <Await resolve={promise} errorElement={<UserError />}>
+      <UserInner />
+    </Await>
+  );
+}
+```
+
+---
+
+## `useBlocker` (advanced)
+
+Block in-app navigations and present custom UI to confirm. Does not handle hard reloads or cross-origin navigations.
+
+```tsx
+import * as React from "react";
+import { useBlocker } from "react-router";
+
+export function ConfirmLeave({ when }: { when: boolean }) {
+  const blocker = useBlocker(when);
+  React.useEffect(() => {
+    if (blocker.state === "blocked") {
+      const ok = window.confirm("You have unsaved changes. Leave?");
+      ok ? blocker.proceed() : blocker.reset();
+    }
+  }, [blocker]);
+  return null;
+}
+```
+

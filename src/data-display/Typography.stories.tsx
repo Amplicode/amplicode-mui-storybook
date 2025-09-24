@@ -1,10 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Box, Link, Paper, Typography } from "@mui/material";
-import {
-  topLevel,
-} from "@amplicode/storybook-extensions";
-
-const Test = () => {};
 
 const meta = {
   title: "DataDisplay/Typography",
@@ -44,7 +39,6 @@ const meta = {
       options: ["default", "genTest"],
       mapping: {
         default: undefined,
-        genTest: topLevel(Test),
       },
     },
   },
@@ -64,7 +58,9 @@ export const Heading1: Story = {
 
 export const Heading2: Story = {
   render: () => {
-    return <Typography variant={"h2"}>Header</Typography>;
+    return (
+      <Typography variant={"h2"}>Header</Typography>
+    );
   },
 };
 

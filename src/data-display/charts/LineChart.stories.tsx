@@ -27,14 +27,15 @@ const yData1 = xData.map((x) => Math.exp(x) * 10);
 const yData2 = xData.map((x) => Math.sin(x * 2) * 10);
 
 export const Basic: Story = {
-  render: () => (
-    <LineChart
-      xAxis={[{ data: xData, scaleType: 'linear' }]}
-      series={[{ data: yData1 }]}
-      width={500}
-      height={300}
-    />
-  ),
+  render: () => {
+    return (
+      <LineChart
+        xAxis={[{ data: xData, scaleType: 'linear' }]}
+        series={[{ data: yData1 }]}
+        width={500}
+        height={300} />
+    );
+  },
   parameters: {
     docs: {
       description: {
@@ -45,17 +46,18 @@ export const Basic: Story = {
 };
 
 export const MultipleSeries: Story = {
-  render: () => (
-    <LineChart
-      xAxis={[{ data: xData, scaleType: 'linear' }]}
-      series={[
-        { data: yData1, label: 'sin(x)' },
-        { data: yData2, label: 'cos(x)' },
-      ]}
-      width={500}
-      height={300}
-    />
-  ),
+  render: () => {
+    return (
+      <LineChart
+        xAxis={[{ data: xData, scaleType: 'linear' }]}
+        series={[
+          { data: yData1, label: 'sin(x)' },
+          { data: yData2, label: 'cos(x)' },
+        ]}
+        width={500}
+        height={300} />
+    );
+  },
   parameters: {
     docs: {
       description: {
@@ -66,15 +68,16 @@ export const MultipleSeries: Story = {
 };
 
 export const WithAxisLabels: Story = {
-  render: () => (
-    <LineChart
-      xAxis={[{ data: xData, label: 'X Axis' }]}
-      yAxis={[{ label: 'Y Axis' }]}
-      series={[{ data: yData1, label: 'sin(x)' }]}
-      width={500}
-      height={300}
-    />
-  ),
+  render: () => {
+    return (
+      <LineChart
+        xAxis={[{ data: xData, label: 'X Axis' }]}
+        yAxis={[{ label: 'Y Axis' }]}
+        series={[{ data: yData1, label: 'sin(x)' }]}
+        width={500}
+        height={300} />
+    );
+  },
   parameters: {
     docs: {
       description: {
@@ -85,14 +88,15 @@ export const WithAxisLabels: Story = {
 };
 
 export const AreaChart: Story = {
-  render: () => (
-    <LineChart
-      xAxis={[{ data: xData }]}
-      series={[{ data: yData1, area: true, label: 'sin(x)' }]}
-      width={500}
-      height={300}
-    />
-  ),
+  render: () => {
+    return (
+      <LineChart
+        xAxis={[{ data: xData }]}
+        series={[{ data: yData1, area: true, label: 'sin(x)' }]}
+        width={500}
+        height={300} />
+    );
+  },
   parameters: {
     docs: {
       description: {
@@ -103,21 +107,22 @@ export const AreaChart: Story = {
 };
 
 export const CustomColorsAndCurve: Story = {
-  render: () => (
-    <LineChart
-      xAxis={[{ data: xData }]}
-      series={[
-        {
-          data: yData1,
-          label: 'sin(x)',
-          color: '#1976d2',
-          curve: 'monotoneX',
-        },
-      ]}
-      width={500}
-      height={300}
-    />
-  ),
+  render: () => {
+    return (
+      <LineChart
+        xAxis={[{ data: xData }]}
+        series={[
+          {
+            data: yData1,
+            label: 'sin(x)',
+            color: '#1976d2',
+            curve: 'monotoneX',
+          },
+        ]}
+        width={500}
+        height={300} />
+    );
+  },
   parameters: {
     docs: {
       description: {
