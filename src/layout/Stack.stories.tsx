@@ -118,6 +118,50 @@ export const Horizontal: Story = {
   },
 };
 
+export const Justified: Story = {
+  render: ({ ...props }) => {
+    return (
+      <Stack {...props} sx={{ width: "100%" }}>
+        {replaceOnGenerate(
+          <>
+            <StyledBox sx={{ p: 2 }}>
+              <Typography variant="body2">Item 1</Typography>
+            </StyledBox>
+            <StyledBox sx={{ p: 2 }}>
+              <Typography variant="body2">Item 2</Typography>
+            </StyledBox>
+            <StyledBox sx={{ p: 2 }}>
+              <Typography variant="body2">Item 3</Typography>
+            </StyledBox>
+          </>,
+          <>
+            <Typography variant="body2">Item 1</Typography>
+            <Typography variant="body2">Item 2</Typography>
+            <Typography variant="body2">Item 3</Typography>
+          </>
+        )}
+      </Stack>
+    );
+  },
+  args: {
+    direction: "row",
+    justifyContent: "space-between",
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+        <Stack {...props} direction={"row"}>
+          <Typography variant="body2">Item 1</Typography>
+          <Typography variant="body2">Item 2</Typography>
+          <Typography variant="body2">Item 3</Typography>
+        </Stack>
+      `,
+      },
+    },
+  },
+};
+
 export const Vertical: Story = {
   render: ({ ...props }) => {
     return (

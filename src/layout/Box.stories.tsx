@@ -62,6 +62,7 @@ export const AbsoluteTopAligned: Story = {
         <GenerationInstructions.Exclude>
           <Box
             sx={(theme) => ({
+              width: "100%",
               background: "#3170de",
               color: "#fff",
               p: 2,
@@ -135,6 +136,7 @@ export const AbsoluteBottomAligned: Story = {
         <GenerationInstructions.Exclude>
           <Box
             sx={(theme) => ({
+              width: "100%",
               background: "#3170de",
               color: "#fff",
               p: 2,

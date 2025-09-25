@@ -411,9 +411,12 @@ export const DenseMenu: Story = {
 export const AccountMenu: Story = {
   render: () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
+
+    const openMenu = Boolean(anchorEl);
+    
     const handleOpen = (e: MouseEvent<HTMLElement>) =>
       setAnchorEl(e.currentTarget);
+    
     const handleClose = () => setAnchorEl(null);
 
     return (
@@ -429,7 +432,7 @@ export const AccountMenu: Story = {
         <Menu
           id="account-menu"
           anchorEl={anchorEl}
-          open={open}
+          open={openMenu}
           onClose={handleClose}
           onClick={handleClose}
           slotProps={{
@@ -507,6 +510,7 @@ export const AccountMenu: Story = {
     },
   },
   args: { open: true },
+  tags: ["account", "user", "profile"]
 };
 
 export const ActionsMenu: Story = {

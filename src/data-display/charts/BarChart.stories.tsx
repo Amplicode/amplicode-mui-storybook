@@ -198,7 +198,7 @@ export const SimpleBarChartPro: Story = {
 
     return (
       <BarChartPro
-        xAxis={[{ data: xLabels }]}
+        xAxis={[{ data: xLabels, zoom: true }]}
         yAxis={[{ width: 50 }]}
         series={series}
         showToolbar
@@ -286,7 +286,7 @@ export const StackedBarChartPro: Story = {
           { data: allViews, label: "All", stack: "total" },
           { data: uniqueViews, label: "Unique", stack: "total" },
         ]}
-        xAxis={[{ data: xLabels }]}
+        xAxis={[{ data: xLabels, zoom: true }]}
         yAxis={[{ width: 50 }]}
         showToolbar
       />
@@ -362,7 +362,7 @@ export const MixedBarChartPro: Story = {
           { data: allViews, label: "All", stack: "stack1" },
           { data: subscriptions, label: "Subscriptions" },
         ]}
-        xAxis={[{ data: xLabels }]}
+        xAxis={[{ data: xLabels, zoom: true }]}
         yAxis={[{ width: 50 }]}
       />
     );
@@ -423,7 +423,7 @@ export const PositiveAndNegativeBarChartPro: Story = {
           { data: uniqueViews, label: "All" },
           { data: subscribers, label: "Subscriptions" },
         ]}
-        xAxis={[{ data: xLabels }]}
+        xAxis={[{ data: xLabels, zoom: true }]}
         yAxis={[{ width: 60, max: 10000 }]}
         showToolbar
       />
@@ -484,7 +484,7 @@ export const StackedBySignBarChartPro: Story = {
           { data: subscribers, label: "Subscriptions", stack: "stack1" },
           { data: allViews, label: "All", stack: "stack1" },
         ]}
-        xAxis={[{ data: xLabels }]}
+        xAxis={[{ data: xLabels, zoom: true }]}
         yAxis={[{ width: 60 }]}
         showToolbar
       />
