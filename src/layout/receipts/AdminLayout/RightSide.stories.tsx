@@ -11,9 +11,10 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { replaceOnGenerate } from "@amplicode/storybook-extensions";
 import { ArrowDropDown, Menu } from "@mui/icons-material";
+import { unstable_getScrollbarSize } from "@mui/utils";
 
 const meta = {
   title: "Layout/Templates/AdminLayout",
@@ -38,8 +39,9 @@ export const RightSidePersistentSidebar: Story = {
   render: ({ ...props }) => {
     const [open, setOpen] = useState<false | true>(true);
 
-    const openedDrawerWidth = 240;
-    const closedDrawerWidth = 64;
+    const scrollBarSize = useTakeScrollWidth(open);
+    const openedDrawerWidth = 240 + scrollBarSize;
+    const closedDrawerWidth = 64 + scrollBarSize;
 
     const toggleOpenDrawer = () => {
       setOpen((prevState) => !prevState);
@@ -75,7 +77,7 @@ function Header({ open, openedDrawerWidth, closedDrawerWidth }: CommonProps) {
         width: open
           ? `calc(100% - ${openedDrawerWidth}px)`
           : `calc(100% - ${closedDrawerWidth}px)`,
-        marginRight: open ? `${openedDrawerWidth}px` : `${closedDrawerWidth}px`,
+        paddingRight: open ? `${openedDrawerWidth}px` : `${closedDrawerWidth}px`,
         background: theme.palette.background.default,
         boxShadow: "none",
         border: "none",
@@ -96,6 +98,7 @@ function Sidebar({
   closedDrawerWidth,
   toggleOpenDrawer,
 }: SidebarProps) {
+  const scrollBarSize = useTakeScrollWidth(open);
   return (
     <Drawer
       sx={(theme) => ({
@@ -110,7 +113,7 @@ function Sidebar({
           background: theme.palette.background.default,
 
           "[aria-hidden] &": {
-            right: 15,
+            right: scrollBarSize,
           },
         },
       })}
@@ -134,8 +137,7 @@ function Sidebar({
       <Divider />
       <Box
         sx={(theme) => ({
-          my: theme.spacing(2.5),
-          py: 3,
+          my: theme.spacing(2),
           px: 2,
           overflowX: "hidden",
         })}
@@ -354,3 +356,17 @@ function JustLayoutStoryDescription() {
     </Box>
   );
 }
+
+const useTakeScrollWidth = (open: boolean) => {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const hasScroll =
+      document.documentElement.scrollHeight >
+      document.documentElement.clientHeight;
+
+    setWidth(hasScroll ? unstable_getScrollbarSize() : 0);
+  }, [open]);
+
+  return width;
+};

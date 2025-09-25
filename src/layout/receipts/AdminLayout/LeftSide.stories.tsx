@@ -79,7 +79,7 @@ function Header({
         width: open
           ? `calc(100% - ${openedDrawerWidth}px)`
           : `calc(100% - ${closedDrawerWidth}px)`,
-        marginLeft: open ? `${openedDrawerWidth}px` : `${closedDrawerWidth}px`,
+        paddingLeft: open ? `${openedDrawerWidth}px` : `${closedDrawerWidth}px`,
         background: theme.palette.background.default,
         boxShadow: "none",
         border: "none",
@@ -134,8 +134,7 @@ function Sidebar({
       <Divider />
       <Box
         sx={(theme) => ({
-          my: theme.spacing(2.5),
-          py: 3,
+          my: theme.spacing(2),
           px: 2,
           overflowX: "hidden",
         })}
