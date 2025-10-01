@@ -1,26 +1,53 @@
 import { useEffect } from "@storybook/preview-api";
 import { PartialStoryFn } from "storybook/internal/types";
 
+type DataSet = {
+  sbDnd?: string;
+  proceed: "asIs" | "generateComponent";
+  storyId: string;
+};
+
 export const withStudioDndListener = (StoryFn: PartialStoryFn) => {
   useEffect(() => {
     window.addEventListener("dragstart", (event: DragEvent) => {
+      const eventData = {
+        previewDnd: {},
+        itemHandles: [window.location.search.split("&")[0].split("=")[1]],
+      };
+
+      const target = event.target as HTMLElement | null;
+
       if (
-        event.target &&
-        "dataset" in event.target &&
-        typeof event.target.dataset === "object" &&
-        !Array.isArray(event.target.dataset) &&
-        event.target.dataset !== null &&
-        "dataTransfer" in event &&
-        event.dataTransfer
+        target &&
+        "dataset" in target &&
+        typeof target.dataset === "object" &&
+        !Array.isArray(target.dataset) &&
+        target.dataset !== null
       ) {
-        event.dataTransfer.setData(
-          "application/vnd.code.tree.amplicode.palette",
-          JSON.stringify({
-            previewDnd: event.target.dataset,
-            itemHandles: [window.location.search.split("&")[0].split("=")[1]],
-          })
-        );
+        let dataSet = target.dataset as DataSet;
+
+        if (!dataSet.sbDnd) {
+          const draggableParent = target.closest<HTMLDivElement>(
+            "[draggable][data-sb-dnd]"
+          );
+
+          if (draggableParent) {
+            dataSet = draggableParent.dataset as DataSet;
+          }
+        }
+
+        eventData.previewDnd = dataSet;
+
+        const storyId =
+          dataSet.storyId || window.location.search.split("&")[0].split("=")[1];
+
+        eventData.itemHandles = [storyId];
       }
+
+      event.dataTransfer?.setData(
+        "application/vnd.code.tree.amplicode.palette",
+        JSON.stringify(eventData)
+      );
     });
   }, []);
 

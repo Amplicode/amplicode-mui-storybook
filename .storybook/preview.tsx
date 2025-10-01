@@ -18,7 +18,10 @@ const preview: Preview = {
       ],
     },
   },
-  decorators: [withStudioDndListener, withDraggable],
+  decorators: [
+    withStudioDndListener,
+    withDraggable
+  ],
   tags: ['autodocs'],
 };
 

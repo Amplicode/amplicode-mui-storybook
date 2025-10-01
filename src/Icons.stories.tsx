@@ -33,14 +33,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-  render: (...args) => {
-    const [meta] = args;
-    const iconName = meta.parameters.iconName;
+  render: (...props) => {
+    console.log(props)
+    const [args, context] = props;
+    const iconName = args.parameters.iconName;
     const Icon = icons[iconName as keyof typeof icons];
 
     return (
       <Draggable
         data-proceed="generateComponent"
+        data-story-id={context.id}
         data-component-name={iconName}
         data-component-package={"@mui/icons-material"}
         data-default-export={false}
