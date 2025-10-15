@@ -18,7 +18,18 @@ const preview: Preview = {
       ],
     },
   },
-  decorators: [withStudioDndListener, withDraggable],
+  decorators: [
+    withStudioDndListener,
+    withDraggable,
+    (Story) => {
+      return (
+        <div>
+          <span id="asDragImage" style={{position: "absolute", top: -10000}}></span>
+          {Story()}
+        </div>
+      )
+    }
+  ],
   tags: ['autodocs'],
 };
 

@@ -16,7 +16,7 @@ const meta = {
       description: {
         component: `<p>The Box component is a generic container for grouping other components. It's a fundamental building block when working with Material UI—you can think of it as a <code>div</code> with extra built-in features, like access to your app's theme and the <a href="https://mui.com/material-ui/customization/how-to-customize/#the-sx-prop">sx prop</a>.</p>`,
       },
-    },
+    }
   },
   tags: ["wrapper", "block", "element"],
 } satisfies Meta<typeof Box>;

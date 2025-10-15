@@ -43,7 +43,7 @@ export const Basic: Story = {
     return <Avatar sx={{ width: 60, height: 60 }} {...props}></Avatar>;
   },
   args: {
-    src: "/images/mascot-1.png",
+    src: "/images/avatar/mascot-1.png",
   },
 };
 
@@ -57,7 +57,7 @@ export const Fallback: Story = {
       </Avatar>
     );
   },
-  args: { src: "/images/mascot-1.pneg" },
+  args: { src: "/images/avatar/mascot-1.pneg" },
   parameters: {
     controls: {
       exclude: ["sx"],
@@ -96,7 +96,7 @@ export const ColoredFallback: Story = {
       </Avatar>
     );
   },
-  args: { src: "/images/mascot-1.pneg" },
+  args: { src: "/images/avatar/mascot-1.pneg" },
   parameters: {
     controls: {
       exclude: ["sx"],
@@ -145,7 +145,7 @@ export const WithBadge: Story = {
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         variant="dot"
       >
-        <Avatar alt="Remy Sharp" src="/images/mascot-1.png" {...props} />
+        <Avatar alt="Remy Sharp" src="/images/avatar/mascot-1.png" {...props} />
       </StyledBadge>
     );
   },
@@ -155,11 +155,11 @@ export const Group: Story = {
   render: (props: AvatarOwnProps) => {
     return (
       <AvatarGroup max={4}>
-        <Avatar alt="Remy Sharp" src="/images/mascot-1.png" />
-        <Avatar alt="Travis Howard" src="/images/mascot-2.png" />
-        <Avatar alt="Cindy Baker" src="/images/mascot-3.png" />
-        <Avatar alt="Agnes Walker" src="/images/mascot-4.png" />
-        <Avatar alt="Trevor Henderson" src="/images/mascot-5.png" />
+        <Avatar alt="Remy Sharp" src="/images/avatar/mascot-1.png" />
+        <Avatar alt="Travis Howard" src="/images/avatar/mascot-2.png" />
+        <Avatar alt="Cindy Baker" src="/images/avatar/mascot-3.png" />
+        <Avatar alt="Agnes Walker" src="/images/avatar/mascot-4.png" />
+        <Avatar alt="Trevor Henderson" src="/images/avatar/mascot-5.png" />
       </AvatarGroup>
     );
   },
@@ -169,10 +169,10 @@ export const Total: Story = {
   render: (props: AvatarOwnProps) => {
     return (
       <AvatarGroup total={24}>
-        <Avatar alt="Remy Sharp" src="/images/mascot-1.png" />
-        <Avatar alt="Travis Howard" src="/images/mascot-2.png" />
-        <Avatar alt="Agnes Walker" src="/images/mascot-3.png" />
-        <Avatar alt="Trevor Henderson" src="/images/mascot-4.png" />
+        <Avatar alt="Remy Sharp" src="/images/avatar/mascot-1.png" />
+        <Avatar alt="Travis Howard" src="/images/avatar/mascot-2.png" />
+        <Avatar alt="Agnes Walker" src="/images/avatar/mascot-3.png" />
+        <Avatar alt="Trevor Henderson" src="/images/avatar/mascot-4.png" />
       </AvatarGroup>
     );
   },
@@ -185,10 +185,10 @@ export const CustomSurplus: Story = {
         renderSurplus={(surplus) => <span>+{surplus.toString()[0]}k</span>}
         total={4251}
       >
-        <Avatar alt="Remy Sharp" src="/images/mascot-1.png" />
-        <Avatar alt="Travis Howard" src="/images/mascot-2.png" />
-        <Avatar alt="Agnes Walker" src="/images/mascot-3.png" />
-        <Avatar alt="Trevor Henderson" src="/images/mascot-4.png" />
+        <Avatar alt="Remy Sharp" src="/images/avatar/mascot-1.png" />
+        <Avatar alt="Travis Howard" src="/images/avatar/mascot-2.png" />
+        <Avatar alt="Agnes Walker" src="/images/avatar/mascot-3.png" />
+        <Avatar alt="Trevor Henderson" src="/images/avatar/mascot-4.png" />
       </AvatarGroup>
     );
   },

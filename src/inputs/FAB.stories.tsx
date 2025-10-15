@@ -53,7 +53,6 @@ export const Basic: Story = {
   },
   args: {
     variant: "extended",
-    disabled: false,
     color: "primary",
     size: "medium",
   },

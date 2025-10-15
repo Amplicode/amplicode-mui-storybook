@@ -35,13 +35,12 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const RightSidePersistentSidebar: Story = {
+const openedDrawerWidth = 240;
+const closedDrawerWidth = 64;
+
+export const RightSideSidebar: Story = {
   render: ({ ...props }) => {
     const [open, setOpen] = useState<false | true>(true);
-
-    const scrollBarSize = useTakeScrollWidth(open);
-    const openedDrawerWidth = 240 + scrollBarSize;
-    const closedDrawerWidth = 64 + scrollBarSize;
 
     const toggleOpenDrawer = () => {
       setOpen((prevState) => !prevState);
@@ -49,11 +48,9 @@ export const RightSidePersistentSidebar: Story = {
 
     return (
       <Box sx={{ display: "flex" }}>
-        <Header {...{ open, openedDrawerWidth, closedDrawerWidth }} />
-        <Content {...{ open, openedDrawerWidth, closedDrawerWidth }} />
-        <Sidebar
-          {...{ open, openedDrawerWidth, closedDrawerWidth, toggleOpenDrawer }}
-        />
+        <Header {...{ open }} />
+        <Content {...{ open }} />
+        <Sidebar {...{ open, toggleOpenDrawer }} />
       </Box>
     );
   },
@@ -61,43 +58,40 @@ export const RightSidePersistentSidebar: Story = {
 
 type CommonProps = {
   open: boolean;
-  openedDrawerWidth: number;
-  closedDrawerWidth: number;
 };
 
 type SidebarProps = CommonProps & {
   toggleOpenDrawer: () => void;
 };
 
-function Header({ open, openedDrawerWidth, closedDrawerWidth }: CommonProps) {
+function Header({ open }: CommonProps) {
   return (
     <AppBar
       position="fixed"
       sx={(theme) => ({
-        width: open
-          ? `calc(100% - ${openedDrawerWidth}px)`
-          : `calc(100% - ${closedDrawerWidth}px)`,
-        paddingRight: open ? `${openedDrawerWidth}px` : `${closedDrawerWidth}px`,
         background: theme.palette.background.default,
         boxShadow: "none",
         border: "none",
         borderBottom: `1px solid ${theme.palette.divider}`,
-        transition: "all 225ms",
+        left: 0,
       })}
     >
-      <Toolbar>
+      <Toolbar
+        sx={{
+          width: open
+            ? `calc(100% - ${openedDrawerWidth}px)`
+            : `calc(100% - ${closedDrawerWidth}px)`,
+          transition: "width 225ms",
+          boxSizing: "border-box",
+        }}
+      >
         <img src="vite.svg" alt="" />
       </Toolbar>
     </AppBar>
   );
 }
 
-function Sidebar({
-  open,
-  openedDrawerWidth,
-  closedDrawerWidth,
-  toggleOpenDrawer,
-}: SidebarProps) {
+function Sidebar({ open, toggleOpenDrawer }: SidebarProps) {
   const scrollBarSize = useTakeScrollWidth(open);
   return (
     <Drawer
@@ -123,7 +117,6 @@ function Sidebar({
     >
       <Toolbar>
         <IconButton
-          color="primary"
           size="medium"
           onClick={toggleOpenDrawer}
           sx={(theme) => ({
@@ -137,8 +130,9 @@ function Sidebar({
       <Divider />
       <Box
         sx={(theme) => ({
-          my: theme.spacing(2),
+          my: 2,
           px: 2,
+          pb: 2,
           overflowX: "hidden",
         })}
       ></Box>
@@ -146,7 +140,7 @@ function Sidebar({
   );
 }
 
-function Content({ open, openedDrawerWidth, closedDrawerWidth }: CommonProps) {
+function Content({ open }: CommonProps) {
   return (
     <Box
       component="main"

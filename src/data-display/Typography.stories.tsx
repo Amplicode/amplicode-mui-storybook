@@ -142,31 +142,3 @@ export const Overline: Story = {
     return <Typography variant={"overline"}>Text</Typography>;
   },
 };
-
-export const SystemProps: Story = {
-  render: () => {
-    return (
-      <Typography mx={12} mt={4} border={1}>
-        Text
-      </Typography>
-    );
-  },
-  decorators: [
-    (Story) => {
-      return (
-        <Box sx={{ width: 500 }}>
-          <Paper sx={{ p: 2 }}>
-            <Typography>
-              The Typography component{" "}
-              <Link href="https://mui.com/system/properties/#properties-reference-table">
-                supports
-              </Link>{" "}
-              all system properties
-            </Typography>
-            <Story />
-          </Paper>
-        </Box>
-      );
-    },
-  ],
-};

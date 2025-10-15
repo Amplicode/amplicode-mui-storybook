@@ -63,7 +63,7 @@ export const WithArrow: Story = {
   },
     args: {
     title: "Delete",
-    children:       <IconButton color="error">
+    children: <IconButton color="error">
         <DeleteOutline />
       </IconButton>,
   },

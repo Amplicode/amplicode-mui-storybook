@@ -12,5 +12,9 @@ export const withDraggable = (
     return StoryFn();
   }
 
-  return <Draggable data-proceed="asIs">{StoryFn()}</Draggable>;
+  return (
+    <Draggable data-proceed="asIs" data-story-id={context.id}>
+      {StoryFn()}
+    </Draggable>
+  );
 };

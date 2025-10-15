@@ -33,7 +33,6 @@ const meta: Meta<RatingArgs> = {
     max: 5,
     readOnly: false,
     size: "medium",
-    disabled: false,
     showLabel: false,
   },
   argTypes: {
@@ -74,14 +73,13 @@ export default meta;
 type Story = StoryObj<RatingArgs>;
 
 export const Basic: Story = {
-  render: ({ value, max, precision, readOnly, size, disabled }) => (
+  render: ({ value, max, precision, readOnly, size }) => (
     <Rating
       value={value}
       max={max}
       precision={precision}
       readOnly={readOnly}
       size={size}
-      disabled={disabled}
     />
   ),
   parameters: {
@@ -137,7 +135,7 @@ export const CustomPrecision: Story = {
 };
 
 export const Controlled: Story = {
-  render: ({ precision, max, size, disabled, readOnly, showLabel }) => {
+  render: ({ precision, max, size, showLabel }) => {
     const [value, setValue] = useState<number | null>(2);
 
     return (
@@ -148,8 +146,6 @@ export const Controlled: Story = {
           precision={precision}
           max={max}
           size={size}
-          disabled={disabled}
-          readOnly={readOnly}
         />
         {showLabel && (
           <Typography variant="body2" sx={{ mt: 1 }}>

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Input } from "@mui/material";
+import { InputBase } from "@mui/material";
 
 const meta = {
   title: "Inputs/Input",
-  component: Input,
+  component: InputBase,
   parameters: {
     layout: "centered",
     controls: {
@@ -24,26 +24,21 @@ const meta = {
     },
   },
   args: {
-    disabled: false,
     error: false,
     size: "small",
-    defaultValue: "Owner",
     placeholder: "Placeholder",
   },
-} satisfies Meta<typeof Input>;
+} satisfies Meta<typeof InputBase>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Basic: Story = {
-  render: ({ size, disabled, defaultValue, placeholder, error, ...props }) => {
+export const Base: Story = {
+  render: ({ size, defaultValue, placeholder, error, ...props }) => {
     return (
-      <Input
+      <InputBase
         size={size}
-        disabled={disabled}
-        defaultValue={defaultValue}
         placeholder={placeholder}
-        error={error}
         {...props}
       />
     );

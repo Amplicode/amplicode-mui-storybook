@@ -42,31 +42,6 @@ export const Default: Story = {
   },
 };
 
-function Header() {
-  return (
-    <Box
-      sx={(theme) => ({
-        display: "flex",
-        alignItems: "center",
-        minHeight: theme.spacing(10),
-        background: "#fff",
-        boxShadow: "inset 0 0 12px 0px #3170de",
-        position: "sticky",
-        width: "100%",
-        top: 0,
-        left: 0,
-        zIndex: 9,
-      })}
-    >
-      <Toolbar>
-        <Typography variant="h6" noWrap component="div" color={"#3170de"}>
-          Header
-        </Typography>
-      </Toolbar>
-    </Box>
-  );
-}
-
 function JustLayoutStoryDescription() {
   return (
     <Box sx={(theme) => ({ p: 2 })}>
@@ -243,13 +218,27 @@ function JustLayoutStoryDescription() {
   );
 }
 
+function Footer() {
+  return (
+    <Box
+      sx={(theme) => ({
+        boxShadow: "inset 0 0 1px 0px #3170de",
+        py: 2,
+        background: "#fff",
+      })}
+    >
+      <Typography variant={"subtitle2"} textAlign={"center"}>
+        Footer ©
+      </Typography>
+    </Box>
+  );
+}
+
 function Content() {
   return (
     <Box
       sx={(theme) => ({
         flex: 1,
-        borderLeft: "1px solid #3170de",
-        borderRight: "1px solid #3170de",
       })}
     >
       <Container fixed sx={(theme) => ({ height: "100%" })}>
@@ -272,18 +261,27 @@ function Content() {
   );
 }
 
-function Footer() {
+function Header() {
   return (
     <Box
       sx={(theme) => ({
-        boxShadow: "inset 0 0 12px 1px #3170de",
-        py: 2,
+        display: "flex",
+        alignItems: "center",
+        minHeight: theme.spacing(10),
         background: "#fff",
+        boxShadow: "inset 0 0 1px 0px #3170de",
+        position: "sticky",
+        width: "100%",
+        top: 0,
+        left: 0,
+        zIndex: 9,
       })}
     >
-      <Typography variant={"subtitle2"} textAlign={"center"}>
-        Footer ©
-      </Typography>
+      <Toolbar>
+        <Typography variant="h6" noWrap component="div" color={"#3170de"}>
+          Header
+        </Typography>
+      </Toolbar>
     </Box>
   );
 }

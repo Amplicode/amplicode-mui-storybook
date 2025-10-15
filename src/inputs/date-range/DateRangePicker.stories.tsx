@@ -15,9 +15,7 @@ const meta: Meta = {
     },
     docs: {
       description: {
-        component: `The <code>DateRangePicker</code> component allows users to select a start and end date.
-          <p>It supports localization, validation, and keyboard interactions.</p>
-          <p>This example shows the basic usage with <code>TextField</code> inputs and controlled state.</p>`,
+        component: `The <code>DateRangePicker</code> component allows users to select a start and end date.<p>It supports localization, validation, and keyboard interactions.</p><p>This example shows the basic usage with <code>TextField</code> inputs and controlled state.</p>`,
       },
     },
   },
