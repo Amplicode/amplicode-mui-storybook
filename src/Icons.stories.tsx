@@ -90,7 +90,7 @@ export const Basic: Story = {
         }),
 
         Item: ({ children, ...props }: { children?: ReactNode }) => (
-          <Grid size={{ xs: 4, md: 3, lg: 2, xl: 1 }} {...props}>
+          <Grid size={{ xs: 6, md: 4, lg: 2, xl: 1 }} {...props}>
             {children}
           </Grid>
         ),

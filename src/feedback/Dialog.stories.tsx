@@ -22,15 +22,15 @@ const meta: Meta<typeof Dialog> = {
   decorators: [],
   argTypes: {
     fullScreen: {
-      control: 'boolean',
+      control: "boolean",
     },
     fullWidth: {
-      control: 'boolean',
+      control: "boolean",
     },
     maxWidth: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    }
+      control: "select",
+      options: ["xs", "sm", "md", "lg", "xl"],
+    },
   },
   args: {},
 };
@@ -120,7 +120,9 @@ export const Transitioned: Story = {
         </Button>
         <Dialog
           open={dialogOpen}
-          TransitionComponent={Transition}
+          slots={{
+            transition: Transition,
+          }}
           onClose={() => {}}
         >
           <DialogTitle>Dialog with dropped gaps</DialogTitle>

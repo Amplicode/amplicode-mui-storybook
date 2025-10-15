@@ -87,8 +87,8 @@ export default meta;
 type Story = StoryObj<RadioGroupArgs>;
 
 export const Basic: Story = {
-  render: ({ label, value, options = [], row, disabled }) => (
-    <FormControl disabled={disabled}>
+  render: ({ label, value, options = [], row }) => (
+    <FormControl>
       <FormLabel>{label}</FormLabel>
       <RadioGroup row={row} defaultValue={value}>
         {options.map((opt) => (

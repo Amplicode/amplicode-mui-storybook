@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Box, Divider, Paper, Stack, Typography } from "@mui/material";
 import { StyledBox } from "./components/StyledBox";
 import { replaceOnGenerate } from "@amplicode/storybook-extensions";
-import { P } from "storybook/internal/components";
 
 const meta = {
   title: "Layout/Stack",
@@ -79,7 +78,7 @@ export const Horizontal: Story = {
   render: ({ ...props }) => {
     return (
       <Stack {...props}>
-        {replaceOnGenerate(
+          {replaceOnGenerate(
           <>
             <StyledBox sx={{ p: 2 }}>
               <Typography variant="body2">Item 1</Typography>
@@ -208,7 +207,7 @@ export const Vertical: Story = {
 export const Responsive: Story = {
   render: ({ ...props }) => {
     return (
-      <Stack {...props} direction={{ xs: "column" }}>
+      <Stack {...props}>
         {replaceOnGenerate(
           <>
             <StyledBox sx={{ p: 2 }}>

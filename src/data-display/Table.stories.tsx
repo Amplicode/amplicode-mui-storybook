@@ -483,7 +483,7 @@ export const CollapsibleRows: Story = {
           </TableHead>
           <TableBody>
             {complexRows.map((r) => (
-              <span key={r.name}>
+              <>
                 <TableRow hover>
                   <TableCell width={48}>
                     <IconButton size="small" onClick={() => toggle(r.name)} aria-label="expand row">
@@ -521,7 +521,7 @@ export const CollapsibleRows: Story = {
                     </Collapse>
                   </TableCell>
                 </TableRow>
-              </span>
+              </>
             ))}
           </TableBody>
         </Table>

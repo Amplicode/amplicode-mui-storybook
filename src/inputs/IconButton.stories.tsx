@@ -34,7 +34,6 @@ const meta = {
     }
   },
   args: {
-    disabled: false,
     color: "primary",
     size: "medium",
   }

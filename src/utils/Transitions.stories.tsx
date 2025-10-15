@@ -1,9 +1,6 @@
 import { Box, Button, Fade, Grow, Slide, Zoom } from "@mui/material";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useArgs } from "@storybook/client-api";
-import {
-  replaceOnGenerate,
-} from "@amplicode/storybook-extensions";
 
 const wrapper = (Story: any, context: any) => {
   const [{ in: fadeIn }, updateArgs] = useArgs();
@@ -69,17 +66,14 @@ export const FadeStory: Story = {
   render: ({ ...props }) => {
     return (
       <Fade {...props}>
-        {replaceOnGenerate(
-          <Box
-            sx={{
-              width: 100,
-              height: 100,
-              bgcolor: "primary.main",
-              borderRadius: 2,
-            }}
-          />,
-          "" as any
-        )}
+        <Box
+          sx={{
+            width: 100,
+            height: 100,
+            bgcolor: "primary.main",
+            borderRadius: 2,
+          }}
+        />
       </Fade>
     );
   },
@@ -102,17 +96,14 @@ export const GrowStory: Story = {
   render: ({ ...props }) => {
     return (
       <Grow {...props}>
-        {replaceOnGenerate(
-          <Box
-            sx={{
-              width: 100,
-              height: 100,
-              bgcolor: "primary.main",
-              borderRadius: 2,
-            }}
-          />,
-          "" as any
-        )}
+        <Box
+          sx={{
+            width: 100,
+            height: 100,
+            bgcolor: "primary.main",
+            borderRadius: 2,
+          }}
+        />
       </Grow>
     );
   },
@@ -135,17 +126,14 @@ export const SlideStory: Story = {
   render: ({ ...props }) => {
     return (
       <Slide {...props}>
-        {replaceOnGenerate(
-          <Box
-            sx={{
-              width: 100,
-              height: 100,
-              bgcolor: "primary.main",
-              borderRadius: 2,
-            }}
-          />,
-          "" as any
-        )}
+        <Box
+          sx={{
+            width: 100,
+            height: 100,
+            bgcolor: "primary.main",
+            borderRadius: 2,
+          }}
+        />
       </Slide>
     );
   },
@@ -168,17 +156,14 @@ export const ZoomStory: Story = {
   render: ({ ...props }) => {
     return (
       <Zoom {...props}>
-        {replaceOnGenerate(
-          <Box
-            sx={{
-              width: 100,
-              height: 100,
-              bgcolor: "primary.main",
-              borderRadius: 2,
-            }}
-          />,
-          "" as any
-        )}
+        <Box
+          sx={{
+            width: 100,
+            height: 100,
+            bgcolor: "primary.main",
+            borderRadius: 2,
+          }}
+        />
       </Zoom>
     );
   },

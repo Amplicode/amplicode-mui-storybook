@@ -34,7 +34,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const LeftSidePersistentSidebar: Story = {
+export const LeftSideSidebar: Story = {
   render: ({ ...props }) => {
     const [open, setOpen] = useState<false | true>(true);
 
@@ -76,9 +76,6 @@ function Header({
     <AppBar
       position="fixed"
       sx={(theme) => ({
-        width: open
-          ? `calc(100% - ${openedDrawerWidth}px)`
-          : `calc(100% - ${closedDrawerWidth}px)`,
         paddingLeft: open ? `${openedDrawerWidth}px` : `${closedDrawerWidth}px`,
         background: theme.palette.background.default,
         boxShadow: "none",
@@ -120,7 +117,6 @@ function Sidebar({
     >
       <Toolbar>
         <IconButton
-          color="primary"
           size="medium"
           onClick={toggleOpenDrawer}
           sx={(theme) => ({

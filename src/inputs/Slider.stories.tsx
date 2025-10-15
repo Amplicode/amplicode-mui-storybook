@@ -21,7 +21,6 @@ const meta: Meta<typeof Slider> = {
     max: 100,
     step: 1,
     marks: false,
-    disabled: false,
     size: "medium",
     orientation: "horizontal",
   },

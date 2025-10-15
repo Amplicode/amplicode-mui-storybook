@@ -40,7 +40,7 @@ const meta = {
       },
     },
   },
-  tags: ["!autodocs", "tabs", "navigation"],
+  tags: ["tabs", "navigation"],
 } satisfies Meta<typeof Tabs>;
 
 export default meta;

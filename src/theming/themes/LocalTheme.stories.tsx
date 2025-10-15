@@ -5,13 +5,14 @@ import {
   PaletteOptions,
   alpha,
   darken,
+  CssBaseline,
 } from "@mui/material";
 import { red, blue, grey, green } from "@mui/material/colors";
 import { GenerationInstructions } from "@amplicode/storybook-extensions";
 import { App } from "./ExampleApp";
 
 const meta: Meta = {
-  title: "Theming/LocalTheme",
+  title: "Theming",
   parameters: {
     layout: "fullscreen",
     docs: {
@@ -294,7 +295,7 @@ const createNanoTheme = (palette: PaletteOptions) => {
   return theme;
 };
 
-const customTheme = createTheme({
+const studioTheme = createTheme({
   cssVariables: true,
   colorSchemes: {
     light: {
@@ -557,8 +558,8 @@ const createHouseTheme = (palette: PaletteOptions) => {
           },
           "& .MuiButtonBase-root": {
             "&:hover": {
-              boxShadow: `inset 0px 0px 2px 2px ${theme.palette.secondary.light}`
-            }
+              boxShadow: `inset 0px 0px 2px 2px ${theme.palette.secondary.light}`,
+            },
           },
         },
       },
@@ -570,13 +571,15 @@ const createHouseTheme = (palette: PaletteOptions) => {
 const houseLightTheme = createHouseTheme(houseLightPalette);
 const houseDarkTheme = createHouseTheme(houseDarkPalette);
 
-export const CustomTheme: Story = {
+export const StudioTheme: Story = {
   render: () => {
     return (
-      <ThemeProvider theme={customTheme}>
-        <GenerationInstructions.Exclude>
-          <App />
-        </GenerationInstructions.Exclude>
+      <ThemeProvider theme={studioTheme}>
+        <CssBaseline>
+          <GenerationInstructions.Exclude>
+            <App />
+          </GenerationInstructions.Exclude>
+        </CssBaseline>
       </ThemeProvider>
     );
   },
@@ -593,9 +596,11 @@ export const HouseTheme: Story = {
   render: () => {
     return (
       <ThemeProvider theme={houseLightTheme}>
-        <GenerationInstructions.Exclude>
-          <App />
-        </GenerationInstructions.Exclude>
+        <CssBaseline>
+          <GenerationInstructions.Exclude>
+            <App />
+          </GenerationInstructions.Exclude>
+        </CssBaseline>
       </ThemeProvider>
     );
   },

@@ -7,6 +7,9 @@ type DataSet = {
   storyId: string;
 };
 
+// const img = new Image(20, 20);
+// img.src = "brand-logo.svg";
+
 export const withStudioDndListener = (StoryFn: PartialStoryFn) => {
   useEffect(() => {
     window.addEventListener("dragstart", (event: DragEvent) => {
@@ -42,6 +45,13 @@ export const withStudioDndListener = (StoryFn: PartialStoryFn) => {
           dataSet.storyId || window.location.search.split("&")[0].split("=")[1];
 
         eventData.itemHandles = [storyId];
+
+        const img = document.getElementById("asDragImage");
+
+        if (img) {
+          img.innerText = storyId;
+          event.dataTransfer?.setDragImage(img, 10, 10);
+        }
       }
 
       event.dataTransfer?.setData(

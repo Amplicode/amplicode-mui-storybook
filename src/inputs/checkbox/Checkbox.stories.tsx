@@ -39,7 +39,6 @@ const meta = {
   },
   args: {
     defaultChecked: true,
-    disabled: false,
     color: "primary",
     size: "medium",
   },

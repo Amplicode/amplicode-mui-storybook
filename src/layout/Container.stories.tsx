@@ -38,8 +38,15 @@ export const Fluid: Story = {
   render: ({ ...props }) => {
     return (
       <Container maxWidth={"lg"} {...props}>
-        <Box sx={{ bgcolor: "#cfe8fc", minHeight: "100vh", p: 2 }}>
-          <GenerationInstructions.Exclude>
+        <GenerationInstructions.Exclude>
+          <Box
+            sx={{
+              bgcolor: "#cfe8fc",
+              minHeight: "100vh",
+              p: 2,
+              boxSizing: "border-box",
+            }}
+          >
             <Typography variant="body2">
               A fluid container width is bounded by the maxWidth prop value.
             </Typography>
@@ -54,8 +61,8 @@ export const Fluid: Story = {
                   );
                 })}
             </Grid>
-          </GenerationInstructions.Exclude>
-        </Box>
+          </Box>
+        </GenerationInstructions.Exclude>
       </Container>
     );
   },
@@ -74,8 +81,15 @@ export const Fixed: Story = {
   render: ({ ...props }) => {
     return (
       <Container fixed {...props}>
-        <Box sx={{ bgcolor: "#cfe8fc", minHeight: "100vh", p: 2 }}>
-          <GenerationInstructions.Exclude>
+        <GenerationInstructions.Exclude>
+          <Box
+            sx={{
+              bgcolor: "#cfe8fc",
+              minHeight: "100vh",
+              p: 2,
+              boxSizing: "border-box",
+            }}
+          >
             <Typography variant="body2">
               Responsive container. The max-width matches the min-width of the
               current breakpoint.
@@ -91,8 +105,8 @@ export const Fixed: Story = {
                   );
                 })}
             </Grid>
-          </GenerationInstructions.Exclude>
-        </Box>
+          </Box>
+        </GenerationInstructions.Exclude>
       </Container>
     );
   },

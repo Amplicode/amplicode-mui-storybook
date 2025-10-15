@@ -38,7 +38,6 @@ const meta = {
   },
   args: {
     variant: "contained",
-    disabled: false,
     color: "primary",
     size: "medium",
   }
