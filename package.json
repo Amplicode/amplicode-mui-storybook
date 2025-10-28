@@ -1,6 +1,6 @@
 {
   "name": "@amplicode/amplicode-mui-storybook",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "Amplicode Storybook for Material UI",
   "keywords": [
     "storybook",
@@ -18,7 +18,8 @@
   "files": [
     "src/*",
     "storybook-static/*",
-    "tsconfig.json"
+    "tsconfig.json",
+    ".storybook/main.ts"
   ],
   "scripts": {
     "storybook": "storybook dev -p 6006",
